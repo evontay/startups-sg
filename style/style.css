@@ -1,0 +1,86 @@
+@import url("./reset.css");
+
+
+/* ======= FONTS ========*/
+.norm {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+}
+
+.condense {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.widekern{
+  letter-spacing: 2px;
+}
+
+/* ====== LAYOUT ======*/
+.center {
+  text-align: center;
+}
+
+.credits {
+  margin: 20px 0 50px 0;
+  p {
+    font-size: 1em;
+    color: #666;
+  }
+}
+
+p {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.navfooter {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.iconbtn {
+  flex: 1;
+  background-color: #333;
+}
+
+.toppad {
+  padding-top: 15px;
+}
+
+/* ====== INDEX PAGE =======*/
+.header {
+  text-align: center;
+}
+
+
+.searchbox {
+  background-color: #666666;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.catbox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  text-align: center;
+}
+
+.cat {
+  background-color: #e8e3e3;
+  margin: 5px 5px 5px 5px;
+  height: 100px;
+  width: 45%;
+  margin: 5px auto;
+}
+
+.select {
+  display: flex;
+  background-color: lightgrey;
+  border: solid black 1px;
+}
