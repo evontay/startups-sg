@@ -84,3 +84,48 @@ p {
   background-color: lightgrey;
   border: solid black 1px;
 }
+
+/*signup css*/
+
+.form{
+  /*border: solid black 5px;*/
+  width: 40%;
+  padding: 20px
+}
+
+.selection{
+  /*border: solid black 5px;*/
+  width: 40%;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.bigbox{
+  /*border: solid black 5px;*/
+  display: flex;
+  justify-content: center;
+}
+
+.newuser {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+footer {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.formbutton {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 20px
+}
