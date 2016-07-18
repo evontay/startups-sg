@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Events</title>
-    <link type="text/css" rel="stylesheet" href="../style/style.css">
+    <link type="text/css" rel="stylesheet" href="./style/style.css">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,24 +21,103 @@
 
   </head>
   <body>
-    <h1 id="title">STARTUP SINGAPORE</h1>
 
-    <div class="page">
-      <form>
-        <label>Username</label>
-        <input type="text" />
-        <label>Password</label>
-        <input type="password" />
-        <div class="buttons">
-          <button>Login</button>
-          <button>Cancel</button>
-        </div>
-      </form>
+
+    <!-- =============== USER SIGN UP ================== -->
+    <div id="signup">
+      <header>
+        <div class="logo">STARTUP.SG</div>
+        <div class="login"></div>
+      </header>
+
+      <div class="newuser">NEW USER</div>
+
+    <div class="bigbox">
+
+      <div class="form">
+
+          <div class="form-group">
+            <p><label for="usr">NAME</label></p>
+            <input type="text" class="form-control" id="usr">
+          </div>
+
+          <div class="form-group">
+           <p><label for="pwd">EMAIL</label></p>
+            <input type="text" class="form-control" id="pwd">
+            <small class="text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          <div class="form-group">
+            <p><label for="pwd">PASSWORD</label></p>
+            <input type="password" class="form-control" id="pwd">
+          </div>
+
+          <div class="form-group">
+            <p><label for="pwd">CONFIRM PASSWORD</label></p>
+            <input type="password" class="form-control" id="pwd">
+          </div>
+
     </div>
 
-    <footer>
+  <div class="selection">
 
-    </footer>
+          <div>I AM A...</div>
+
+          <div class="radio">
+            <label><input type="radio" name="start-up">START-UP</label>
+          </div>
+
+          <div class="radio">
+            <label><input type="radio" name="investor">INVESTOR</label>
+          </div>
+
+          <div class="radio">
+            <label><input type="radio" name="developer">DEVELOPER</label>
+          </div>
+
+          <div class="radio">
+            <label><input type="radio" name="designer">DESIGNER</label>
+          </div>
+
+          <div class="radio">
+            <label><input type="radio" name="optradio">HUSTLER</label>
+          </div>
+  </div>
+
+
+  </div>
+
+  <div class="formbutton">
+  <button type="button" class="btn btn-primary btn-md">SIGN UP!</button>
+  </div>
+
+      <footer>COPYRIGHT FOOTER</footer>
+
+    </div>
+
+    <!-- =============== USER SIGN IN ================== -->
+    <div id="signin">
+      <h1 id="title">STARTUP SINGAPORE</h1>
+
+      <div class="page">
+
+            <div class="form-group">
+             <p><label for="pwd">EMAIL</label></p>
+              <input type="text" class="form-control" id="pwd">
+              <small class="text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+            <div class="form-group">
+              <p><label for="pwd">PASSWORD</label></p>
+              <input type="password" class="form-control" id="pwd">
+            </div>
+
+            <div class="formbutton">
+            <button type="button" class="btn btn-primary btn-md">SIGN UP!</button>
+            </div>
+
+      </div> <!-- page -->
+    </div> <!-- signin -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
