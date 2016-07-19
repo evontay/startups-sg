@@ -3,6 +3,16 @@ var serverURL = 'http://startups-sg.herokuapp.com/'
 $(function () {
   // listen for the form login
   getData()
+  // Show individual item
+  $(document).on('click', '#cospace .one-item', function (event) {
+    var newid = $(this).attr('id')
+    console.log(newid)
+    $.get(serverURL + 'co-working-spaces/' + newid)
+      .done(function (data) {
+        $('#cospace').hide()
+        $('#cospace-show').append('<h1>' + data.cospace.name + '</h1>')
+      })
+  })
 })
 
 function getData () {
@@ -14,7 +24,7 @@ function getData () {
           console.log(datum.logo)
         }
         $('#cospace').append(
-          '<div class="one-item">' +
+          '<div id=' + datum._id + ' class="one-item">' +
           '<img class="logo-all img-circle" src="' + datum.logo + '"/>' +
           '<div class="item-blurb norm">' +
           '<h6 class="name-all">' + datum.name + '</h6>' +
