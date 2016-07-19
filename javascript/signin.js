@@ -21,7 +21,7 @@ function signin (formData) {
       window.localStorage.auth_token = response.auth_token
       window.localStorage.id = response.id
       // then redirect
-      window.location.href = '../../index.html'
+      window.location.href = 'index.html'
       console.log(response)
     },
     error: function (xhr, ajaxOptions, thrownError) {
