@@ -1,5 +1,5 @@
 /* global $ */
-var serverURL = 'http://localhost:3000/'
+var serverURL = 'http://startups-sg.herokuapp.com/'
 
 $(function () {
   // listen for the form login
@@ -13,11 +13,11 @@ $(function () {
 function signup (formData) {
   $.ajax({
     type: 'POST',
-    url: 'https://startups-sg.herokuapp.com/signup',
+    url: serverURL + 'signup',
     data: formData,
     success: function (response) {
       // then redirect
-      window.location.href = 'user.html'
+      window.location.href = 'index.html'
     },
     error: function (xhr, ajaxOptions, thrownError) {
       // else output error

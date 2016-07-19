@@ -16,121 +16,22 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="./javascript/cospaces.js"></script>
 
 <title></title>
 </head>
 <body>
 
-<!-- ===== LIST ALL COWORKING SPACES =====-->
-<div class="map">
-</div>
-
-<div class="item">
-  <div class="icon">
-    <img>
-  </div>
-
-  <div class="info">
-    <h3 class="name"></h3>
-    <p class="address"></p>
-    <a class="website"></a>
-  </div>
-</div>
+<!-- ===== MAP COWORKING SPACES =====-->
+<div id='map' class="map"></div>
 
 
 
-<!-- ===== SHOW ONE COWORKING SPACE ===== -->
-<div class="item">
-  <div class="icon">
-    <img>
-  </div>
 
-  <div class="info">
-    <h3 class="name"></h3>
-    <p class="address"></p>
-    <a class="website"></a>
-    <p class="desc"></p>
-    <img class="headerimg" />
-  </div>
-</div>
+<!-- ===== SHOW ALL COWORKING SPACES ===== -->
 
-<!-- ===== EDIT COWORKING SPACE ===== -->
-<h2>Edit Details</h2>
-<div class="form">
+  <div id="cospace" class="info"></div>
 
-    <div class="form-group">
-      <p><label>Name</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-     <p><label>Website</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <p><label>Address</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <p><label>Description</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <p><label for "logo">Logo</label></p>
-      <input type="file" name="cospaces.logo" id="logo">
-    </div>
-
-    <div class="form-group">
-      <p><label for "image">Header Image</label></p>
-      <input type="file" name="cospaces.image" id="image" >
-    </div>
-
-    <div class="formbutton">
-    <button type="button" class="btn btn-primary btn-md">EDIT</button>
-    </div>
-
-</div>
-
-<!-- ===== ADD A NEW COWORKING SPACE =====-->
-<h2>Add a co-working space</h2>
-<div class="form">
-
-    <div class="form-group">
-      <p><label>Name</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-     <p><label>Website</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <p><label>Address</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <p><label>Description</label></p>
-      <input type="text" class="form-control">
-    </div>
-
-    <div class="form-group">
-      <p><label for "logo">Logo</label></p>
-      <input type="file" name="cospaces.logo" id="logo">
-    </div>
-
-    <div class="form-group">
-      <p><label for "image">Header Image</label></p>
-      <input type="file" name="cospaces.image" id="image" >
-    </div>
-
-    <div class="formbutton">
-    <button type="button" class="btn btn-primary btn-md">SUBMIT</button>
-    </div>
-
-</body>
-</html>
+<!-- ===== ADD COWORKING SPACE ===== -->
+<button>+ Add Co-working Space</button>
