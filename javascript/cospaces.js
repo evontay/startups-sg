@@ -20,7 +20,7 @@ function getData () {
     .done(function (data) {
       data.forEach(function (datum) {
         if (datum.logo === '' || null || undefined) {
-          datum.logo = '../../img/default.svg'
+          datum.logo = 'img/default.svg'
           console.log(datum.logo)
         }
         $('#cospace').append(
