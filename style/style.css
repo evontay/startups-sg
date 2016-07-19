@@ -1,10 +1,47 @@
 @import url("./reset.css");
 
+/* ======= BRAND COLORS ========*/
 
-/* ======= FONTS ========*/
+.lightgreen { color: #a9fcdc;}
+.brightgreen { color: #1bedd4;}
+.darkgreen { color: #26b6a5;}
+.darkgrey { color: #333333;}
+.grey { color: #888888;}
+.lightgrey { color : #e6e7e8;}
+.red { color: #ed6306;}
+
+
+/* ======= FONTS OR TEXT ELEMENTS ========*/
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*font boldness*/
+.400 {font-weight: 400;}
+.500 {font-weight: 500;}
+.700 {font-weight: 700;}
+.900 {font-weight: 900;}
+
+h1 {font-size: 3em;}
+h2 {font-size: 2.5em;}
+h3 {font-size: 2.2em;}
+h4 {font-size: 2em;}
+h5 {font-size: 1.5em;}
+h6 {font-size: 1.2em;}
+
+p {
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
 .norm {
   font-family: 'Roboto', sans-serif;
-  font-weight: 900;
+  font-weight: bold;
 }
 
 .condense {
@@ -15,46 +52,38 @@
   letter-spacing: 2px;
 }
 
-/* ====== LAYOUT ======*/
-.center {
-  text-align: center;
+.up {
+  text-transform: uppercase;
 }
 
-.credits {
-  margin: 20px 0 50px 0;
-  p {
-    font-size: 1em;
-    color: #666;
-  }
+.hor-line {
+  border-top: 2px solid $D9534F;
 }
 
-p {
-  font-size: 0.9em;
-  color: #666;
-}
+/* ====== LAYOUT ELEMENTS ======*/
+.center {text-align: center;}
+.toppad {padding-top: 15px;}
 
-.navfooter {
+.Site {
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
+  min-height: 100vh;
+  flex-direction: column;
 }
-
-.iconbtn {
+.Site-content {
   flex: 1;
-  background-color: #333;
 }
 
-.toppad {
-  padding-top: 15px;
+li {
+  list-style: none;
 }
 
-/* ====== INDEX PAGE =======*/
-.header {
-  text-align: center;
+a {
+  text-decoration: none;
 }
 
+/* ====== SEARCHBAR ======*/
 
-.searchbox {
+.searchbar {
   background-color: #666666;
   padding: 20px;
 }
@@ -63,20 +92,131 @@ p {
   margin-bottom: 0;
 }
 
+.navfooter {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-top: 3px solid #1bedd4;
+  background-color: #e6e7e8;
+  /*position: fixed;
+  bottom:0;*/
+}
+
+.iconbtn {
+  flex: 1;
+  background-color: #e6e7e8;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 30px;
+  min-width: 30px;
+}
+
+.home { background-image: url(../img/home-icon.svg);}
+.cospace { background-image: url(../img/cospace-icon.svg);}
+.inc { background-image: url(../img/inc-icon.svg);}
+.event { background-image: url(../img/event-icon.svg);}
+.govt { background-image: url(../img/govt-icon.svg);}
+
+/* ====== INDEX PAGE =======*/
+
+.topuser {
+  margin-top: 10px;
+}
+
+.topuser li {
+  background-color: #e6e7e8;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  text-align: center;
+  margin-bottom: 20px;
+  /*text-transform: uppercase;*/
+  letter-spacing: 1.5px;
+  line-height: 1.5;
+}
+
+ul {
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+}
+
+li {
+  flex: 1;
+  padding: 5px;
+  margin: 5px 10px;
+  border-radius: 2px;
+  text-align: center;
+  max-width: 80px;
+  font-size: 0.9em;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+}
+
 .catbox {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .cat {
-  background-color: #e8e3e3;
-  margin: 5px 5px 5px 5px;
+  background-color: #a9fcdc;
+  border: solid 1px white;
   height: 100px;
-  width: 45%;
-  margin: 5px auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.in-cat {
+  margin: auto;
+  text-transform: uppercase;
+  color: #333333;
+  letter-spacing: 2px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.mob {display: block;}
+.full {display: none;}
+
+@media screen and (min-width: 480px) {
+  .catbox {
+    flex-direction: row;
+  }
+
+  .cat {
+    flex: 1;
+    height: 200px;
+  }
+
+  .full-logo {
+    height: 130px;
+  }
+
+  .mob {display: none;}
+  .full {display: block;}
+
+}
+
+.credits {
+  text-align: center;
+  font-size: 0.8em;
+  margin-bottom: 20px;
+  color: #888888;
 }
 
 .select {
