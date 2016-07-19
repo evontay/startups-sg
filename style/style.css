@@ -154,7 +154,13 @@ a:hover {
 
 .topuser li {
   background-color: #e6e7e8;
+  border-radius: 15px;
+}
+
+.topuser-btn {
   color: #333333;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .title {
