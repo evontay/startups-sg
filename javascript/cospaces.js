@@ -20,17 +20,17 @@ function getData () {
     .done(function (data) {
       data.forEach(function (datum) {
         if (datum.logo === '' || null || undefined) {
-          datum.logo = 'img/default.svg'
+          datum.logo = 'img/default-logo.svg'
           console.log(datum.logo)
         }
         $('#cospace').append(
           '<div id=' + datum._id + ' class="one-item">' +
-          '<img class="logo-all img-circle" src="' + datum.logo + '"/>' +
+          '<img class="logo-all img-circle full-avatar" src="' + datum.logo + '"/>' +
           '<div class="item-blurb norm">' +
           '<h6 class="name-all">' + datum.name + '</h6>' +
           '<p class="hyphenate"><a href="' + datum.website + '">' + datum.website + '</a></p>' +
-          '<p class="grey 400">' + datum.address + '</p>' +
-          '<p class="truncate full grey 400">' + datum.description + '</p>' +
+          '<p class="address">' + datum.address + '</p>' +
+          '<p class="truncate full grey">' + datum.description + '</p>' +
           '</div>'
         )
       })
