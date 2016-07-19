@@ -26,7 +26,7 @@ function loadUser () {
     },
     error: function (xhr, ajaxOptions, thrownError) {
       // else error, redirect to login
-      window.location.href = 'login.html'
+      window.location.href = 'views/session/signin.html'
     }
   })
   if (currentUser) { $('#login').hide() }
