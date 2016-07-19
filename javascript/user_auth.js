@@ -4,7 +4,7 @@ var currentUser = null
 
 // We are assuming Local Storage is supported
 $(function () {
-  if (!window.localStorage['email'] || !window.localStorage['auth_token']) window.location.href = 'login.html'
+  if (!window.localStorage['email'] || !window.localStorage['auth_token']) window.location.href = 'views/session/login.html'
   else loadUser()
 })
 
@@ -26,9 +26,7 @@ function loadUser () {
     },
     error: function (xhr, ajaxOptions, thrownError) {
       // else error, redirect to login
-      window.location.href = 'views/session/signin.html'
+      window.location.href = 'views/session/login.html'
     }
   })
-  if (currentUser) { $('#login').hide() }
-  if (currentUser) { $('#signup').hide() }
 }
