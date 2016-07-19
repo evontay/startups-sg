@@ -8,7 +8,7 @@
 .darkgrey { color: #333333;}
 .grey { color: #888888;}
 .lightgrey { color : #e6e7e8;}
-.red { color: #d9534f;}
+.red { color: #ed6306;}
 
 
 /* ======= FONTS OR TEXT ELEMENTS ========*/
@@ -64,9 +64,21 @@ p {
 .center {text-align: center;}
 .toppad {padding-top: 15px;}
 
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.Site-content {
+  flex: 1;
+}
+
 li {
   list-style: none;
-  background-color: #1bedd4;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* ====== SEARCHBAR ======*/
@@ -85,14 +97,17 @@ li {
   flex-wrap: nowrap;
   flex-direction: row;
   border-top: 3px solid #1bedd4;
+  background-color: #e6e7e8;
+  /*position: fixed;
+  bottom:0;*/
 }
 
 .iconbtn {
   flex: 1;
-  background-color: white;
+  background-color: #e6e7e8;
   background-repeat: no-repeat;
   background-position: center;
-  height: 50px;
+  height: 30px;
   min-width: 30px;
 }
 
@@ -106,6 +121,10 @@ li {
 
 .topuser {
   margin-top: 10px;
+}
+
+.topuser li {
+  background-color: #e6e7e8;
 }
 
 .title {
@@ -169,6 +188,27 @@ li a {
   letter-spacing: 2px;
   font-weight: bold;
   line-height: 1.2;
+}
+
+.mob {display: block;}
+.full {display: none;}
+
+@media screen and (min-width: 480px) {
+  .catbox {
+    flex-direction: row;
+  }
+
+  .cat {
+    flex: 1;
+    height: 200px;
+  }
+
+  .full-logo {
+    height: 130px;
+  }
+
+  .mob {display: none;}
+  .full {display: block;}
 
 }
 
