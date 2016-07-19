@@ -17,7 +17,7 @@ function signup (formData) {
     data: formData,
     success: function (response) {
       // then redirect
-      window.location.assign('file:///Users/tayevon/startups-sg/index.html')
+      window.location.href = '../../index.html'
     },
     error: function (xhr, ajaxOptions, thrownError) {
       // else output error
