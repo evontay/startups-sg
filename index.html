@@ -1,98 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Events</title>
-    <link type="text/css" rel="stylesheet" href="./style/style.css">
+<head>
+  <meta charset="UTF-8">
+  <title>Startups.SG</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <!-- Latest compiled and minified JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
 
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+<body class="Site">
 
-  </head>
-  <body>
-    <div class="container">
-      <div class="userbtn">
-        <button><a src="#">Login</a></button>
-        <button><a src="#">Sign in</a></button>
-      </div><!-- userbtn -->
+  <div class="searchbar red norm upcase">
+    <form action="" class="search-form">
+         <div class="has-feedback">
+             <label for="search" class="sr-only norm up">Search</label>
+             <input type="text" class="form-control" name="search" id="search" placeholder="search">
+               <span class="glyphicon glyphicon-search form-control-feedback"></span>
+         </div>
+     </form>
+  </div><!-- searchbox -->
 
-      <div class="header normalise">
-        <img src="img/logo.svg"/>
-        <h3 class="norm widekern">STARTUP<br>SINGAPORE</h3>
-        <p class="norm">Artisanal filler text for your site or project.</p>
-      </div><!-- header -->
-    </div><!-- container -->
+  <div class="container center">
+    <ul class="topuser center">
+      <li class="norm up widekern"><a href="#">Sign Up</a></li>
+      <li class="norm up widekern"><a href="#">Log In</a></li>
+    </ul>
 
-    <div class="searchbox">
-      <form action="" class="search-form">
-           <div class="has-feedback">
-               <label for="search" class="sr-only">Search</label>
-               <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
-           </div>
-       </form>
-    </div><!-- searchbox -->
-
-    <div class="catbox">
-      <a src="cospaces.html" class="cat center toppad">
-        <img src="img/cospace-icon.svg"/>
-        <h5>Coworking Spaces</h5>
-      </a>
-      <a src="events.html" class="cat center toppad">
-        <img src="img/event-icon.svg"/>
-        <h5>Events</h5>
-      </a>
-      <a src="incubators.html" class="cat center toppad">
-        <img src="img/inc-icon.svg"/>
-        <h5>Incubator/<br>Accelerators</h5>
-      </a>
-      <a src="programs.html" class="cat center toppad">
-        <img src="img/govt-icon.svg"/>
-        <h5>Govt programs</h5>
-      </a>
-    </div>
-
-    <div class="center credits">
-      <div class="container">
-        <p class="norm grey">Start-up Singapore is a project started by GLEW &copy; 2016 </p>
-        <p class="norm">Special credits to Ahn-Minh T Do</p>
-      </div>
-    </div>
-
-    <div id="footer">
-      <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
-        <div class="row" id="bottomNav">
-          <div class="col-xs-2 text-center"><a href="#"><img src="img/home-icon.svg"/></a></div>
-          <div class="col-xs-2 text-center"><a href="#"><img src="img/cospace-icon.svg"/></a></div>
-          <div class="col-xs-2 text-center"><a href="#"><img src="img/inc-icon.svg"/></a></div>
-          <div class="col-xs-2 text-center"><a href="#"><img src="img/govt-icon.svg"/></a></div>
-          <div class="col-xs-2 text-center"><a href="#"><img src="img/event-icon.svg"/></div>
-        </div>
-      </div>
+    <img class="toppad full-logo" src="img/logo.svg"/>
+    <h4 class="title brightgreen">StartUps<span class="darkgreen">.SG</span></h4>
+    <p class="tagline norm grey up">A project for the startup community in Singapore</p>
   </div>
 
+  <div class="catbox">
+    <div class="cat">
+        <img class="in-cat mob" src="img/cospace-red.svg">
+        <img class="in-cat full" src="img/cospace-full.svg">
+      <p class="in-cat condense">Co-working <br>Spaces</p>
     </div>
-    </nav>
 
+    <div class="cat">
+      <img class="in-cat mob" src="img/inc-red.svg">
+      <img class="in-cat full" src="img/inc-full.svg">
+      <p class="in-cat condense">Incubators/<br>Accelerators</p>
+    </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <div class="cat">
+      <img class="in-cat mob" src="img/event-red.svg"><br></p>
+      <img class="in-cat full" src="img/event-full.svg">
+      <p class="in-cat condense">Events</p>
+    </div>
 
+    <div class="cat">
+      <img class="in-cat mob" src="img/govt-red.svg"><br></p>
+      <img class="in-cat full" src="img/govt-full.svg">
+      <p class="in-cat condense">Govt <br>Programmes</p>
+    </div>
+  </div>
 
+  <div class="credits norm Site-content">
+    <div class="container">
+      <p>Start-up Singapore is a project started by GLEW &copy; 2016 </p>
+      <p>Special credits to Ahn-Minh T Do</p>
+    </div>
+  </div>
 
-  </body>
+  <!-- <div class="navfooter"> -->
+    <ul class="navfooter">
+      <a src="index.html"><li class="iconbtn home"></li></a>
+      <a src="cospaces.html"><li class="iconbtn cospace"></li></a>
+      <a src="incubators.html"><li class="iconbtn inc"></li></a>
+      <a src="events.html"><li class="iconbtn event"></li></a>
+      <a src="programs.html"><li class="iconbtn govt"></li></a>
+    </ul>
+
+</body>
 </html>
