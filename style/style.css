@@ -154,6 +154,7 @@ a:hover {
 
 .topuser li {
   background-color: #e6e7e8;
+  color: #333333;
 }
 
 .title {
@@ -212,6 +213,10 @@ li a {
   padding: 15px;
 }
 
+.cat:hover {
+  background-color: #1bedd4;
+}
+
 .in-cat {
   margin: auto;
   text-transform: uppercase;
@@ -232,6 +237,7 @@ li a {
   .cat {
     flex: 1;
     height: 200px;
+    cursor: pointer;
   }
 
   .full-logo {
