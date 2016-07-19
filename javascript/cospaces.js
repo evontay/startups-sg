@@ -9,10 +9,20 @@ function getData () {
   $.get(serverURL + 'co-working-spaces')
     .done(function (data) {
       data.forEach(function (datum) {
-        if (datum.image == undefined) {
-          datum.image = '<img src="default.svg">'
+        if (datum.logo === '' || null || undefined) {
+          datum.logo = '../../img/default.svg'
+          console.log(datum.logo)
         }
-        $('#cospace').append('<ul><li>' + datum.name + '</li><li>' + datum.address + '</li><li>' + datum.description + '</li><li>' + datum.website + '</li><li>' + datum.logo + '</li><li>' + datum.image + '</li></ul>')
+        $('#cospace').append(
+          '<div class="one-item">' +
+          '<img class="logo-all img-circle" src="' + datum.logo + '"/>' +
+          '<div class="item-blurb norm">' +
+          '<h6 class="name-all">' + datum.name + '</h6>' +
+          '<p class="hyphenate"><a href="' + datum.website + '">' + datum.website + '</a></p>' +
+          '<p class="grey 400">' + datum.address + '</p>' +
+          '<p class="truncate full grey 400">' + datum.description + '</p>' +
+          '</div>'
+        )
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
