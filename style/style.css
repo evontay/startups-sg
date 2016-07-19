@@ -118,6 +118,9 @@ a {
 .govt { background-image: url(../img/govt-icon.svg);}
 
 /* ====== INDEX PAGE =======*/
+.hidden {
+  display: none
+}
 
 .topuser {
   margin-top: 10px;
