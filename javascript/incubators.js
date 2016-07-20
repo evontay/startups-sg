@@ -1,16 +1,14 @@
 /* global $ google alert geocoder */
 var serverURL = 'http://startups-sg.herokuapp.com/'
 
-
-
 $(function () {
-  // $('#header').addClass('hide')
   $('#map').addClass('hide')
   // listen for the form login
+  var newid
   getData()
   // Show individual item
   $(document).on('click', '#incubator .one-item', function (event) {
-    var newid = $(this).attr('id')
+    newid = $(this).attr('id')
     console.log(newid)
     showDetail(newid)
   })
@@ -26,7 +24,16 @@ $(function () {
   $('#add-incubator-form').on('submit', function (event) {
     event.preventDefault()
     var formData = $(this).serialize()
-    addincubator(formData)
+    addIncubator(formData)
+  })
+  $('#edit-incubator-form').on('submit', function (event) {
+    event.preventDefault()
+    var formData = $(this).serialize()
+    editIncubator(formData, newid)
+  })
+  $(document).on('click', '#delete', function (event) {
+    event.preventDefault()
+    deleteIncubator(newid)
   })
 })
 
@@ -61,7 +68,8 @@ function showDetail (newid) {
         '<p class="grey 400">' + data.incubator_accelerator.address + '</p>' +
         '<p class=" full grey 400">' + data.incubator_accelerator.description + '</p></div></div>' +
         '<div class="image"><img src="' + data.incubator_accelerator.image + '"/>' +
-        '</div>'
+        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
+        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
       )
       console.log(data.incubator_accelerator.description)
       console.log(data.incubator_accelerator.image)
@@ -89,11 +97,11 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
-function addincubator (formData) {
+function addIncubator (formData) {
   $.ajax({
     type: 'POST',
     url: serverURL + 'incubator-accelerators',
@@ -107,6 +115,41 @@ function addincubator (formData) {
       console.log(xhr.status)
       console.log(thrownError)
       window.alert('add incubator Failed')
+    }
+  })
+}
+
+function editIncubator (formData, newid) {
+  $.ajax({
+    type: 'PUT',
+    url: serverURL + 'incubator-accelerators/' + newid,
+    data: formData,
+    success: function (response) {
+      // then redirect
+      window.location.href = 'incubators.html'
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      // else output error
+      console.log(xhr.status)
+      console.log(thrownError)
+      window.alert('edit Incubator / Accelerator Failed')
+    }
+  })
+}
+
+function deleteIncubator (newid) {
+  $.ajax({
+    type: 'DELETE',
+    url: serverURL + 'incubator-accelerators/' + newid,
+    success: function (response) {
+      // then redirect
+      window.location.href = 'incubators.html'
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      // else output error
+      console.log(xhr.status)
+      console.log(thrownError)
+      window.alert('delete Incubator / Accelerator Failed')
     }
   })
 }
