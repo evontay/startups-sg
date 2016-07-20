@@ -41,7 +41,7 @@ function getData () {
   $.get(serverURL + 'co-working-spaces')
     .done(function (data) {
       data.forEach(function (datum) {
-        if (datum.logo === '' || null || undefined) {
+        if ((datum.logo === '') || (datum.logo === undefined) || (datum.logo === null)) {
           datum.logo = 'img/default-logo.svg'
           console.log(datum.logo)
         }
