@@ -58,49 +58,46 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
 function createMarkers (map) {
   $.get(serverURL + 'co-working-spaces')
     .done(function (data) {
       data.forEach(function (datum) {
-
         geocoder = new google.maps.Geocoder()
 
-        geocoder.geocode( { 'address' : datum.address }, function( results, status ) {
-              if( status == google.maps.GeocoderStatus.OK ) {
-
-                  //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
-                  var marker = new google.maps.Marker( {
-                      map     : map,
-                      position: results[0].geometry.location
-                      // title: datum.name
-                  })
-                  var contentString = '<div id='+ datum._id +' class="one-map-item">' +
+        geocoder.geocode({'address':datum.address}, function (results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+          // In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+                    // title: datum.name
+            })
+            var contentString = '<div id=' + datum._id + ' class="one-map-item">' +
                     datum.name +
                       '</div>'
-                  var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                  })
-                  marker.addListener('click', function () {
-                    if (prevOpenWindow != null) {
-                      prevOpenWindow.close()
-                    }
-                    prevOpenWindow = infowindow
-                    infowindow.open(map, marker)
-                  })
-              } else {
-                  alert( 'Geocode was not successful for the following reason: ' + status )
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            })
+            marker.addListener('click', function () {
+              if (prevOpenWindow != null) {
+                prevOpenWindow.close()
               }
-          } )
-
+              prevOpenWindow = infowindow
+              infowindow.open(map, marker)
+            })
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status)
+          }
+        })
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
 var prevOpenWindow = null
