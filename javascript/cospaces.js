@@ -73,9 +73,9 @@ function showDetail (newid) {
         '<h4 class="toppad">' + data.cospace.name + '</h4>' +
         '<div class="norm">' +
         '<p class="hyphenate"><a href="' + data.cospace.website + '">' + data.cospace.website + '</a></p>' +
-        '<p class="darkgrey toppad">' + data.cospace.address + '</p>' +
+        '<p class="toppad address">' + data.cospace.address + '</p>' +
         '<p class="grey 400">' + data.cospace.description + '</p>' +
-        '<img class="h-image" src="' + data.cospace.image + '"/>' +
+        '<img class="h-image " src="' + data.cospace.image + '"/>' +
         '<div class="edit-del toppad">' +
         '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
         '<a href="#">' +
