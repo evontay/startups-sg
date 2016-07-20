@@ -37,11 +37,11 @@ $(function () {
   })
 })
 
-$(document).on('click', '.map-btn', function (event) {
-  console.log('map-btn clicked')
-  $('#header').toggleClass('hide')
-  $('#map').toggleClass('hide')
-})
+// $(document).on('click', '.map-btn', function (event) {
+//   console.log('map-btn clicked')
+//   $('#header').toggleClass('hide')
+//   $('#map').toggleClass('hide')
+// })
 
 function showDetail (newid) {
   $.get(serverURL + 'government-programs/' + newid)
