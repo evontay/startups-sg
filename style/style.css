@@ -330,6 +330,10 @@ li a {
   margin-bottom: 10px;
 }
 
+.image {
+  width:100%;
+}
+
 .add {
   display: block;
   position: fixed;
@@ -337,6 +341,7 @@ li a {
   right: 10px;
   color: #ED6306;
 }
+
 @media screen and (min-width: 480px) {
   .full-avatar {
     height: 70px;
