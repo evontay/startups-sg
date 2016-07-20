@@ -28,10 +28,9 @@ $(function () {
     var formData = $(this).serialize()
     editCospace(formData, newid)
   })
-  $('#delete').on('submit', function (event) {
+  $(document).on('click', '#delete', function (event) {
     event.preventDefault()
-    var formData = $(this).serialize()
-    deleteCospace(formData, newid)
+    deleteCospace(newid)
   })
 })
 
@@ -127,11 +126,10 @@ function editCospace (formData, newid) {
   })
 }
 
-function deleteCospace (formData, newid) {
+function deleteCospace (newid) {
   $.ajax({
     type: 'DELETE',
     url: serverURL + 'co-working-spaces/' + newid,
-    data: formData,
     success: function (response) {
       // then redirect
       window.location.href = 'cospaces.html'
