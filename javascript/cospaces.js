@@ -3,14 +3,14 @@ var serverURL = 'http://startups-sg.herokuapp.com/'
 $(function () {
   // listen for the form login
   getData()
+  var newid
   // Show individual item
   $(document).on('click', '#cospace .one-item', function (event) {
-    var newid = $(this).attr('id')
-    console.log(newid)
+    newid = $(this).attr('id')
     showDetail(newid)
   })
   $(document).on('click', '.one-map-item', function (event) {
-    var newid = $(this).attr('id')
+    newid = $(this).attr('id')
     console.log(newid)
     showDetail(newid)
   })
@@ -22,6 +22,12 @@ $(function () {
     event.preventDefault()
     var formData = $(this).serialize()
     addCospace(formData)
+  })
+  $('#edit-cospace-form').on('submit', function (event) {
+    event.preventDefault()
+    console.log(newid)
+    var formData = $(this).serialize()
+    editCospace(formData, newid)
   })
 })
 
@@ -47,10 +53,12 @@ function showDetail (newid) {
         '<p class="grey 400">' + data.cospace.address + '</p>' +
         '<p class=" full grey 400">' + data.cospace.description + '</p></div></div>' +
         '<div class="image"><img src="' + data.cospace.image + '"/>' +
-        '</div>'
+        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>'
       )
+      $('#cospace-show').show()
       console.log(data.cospace.description)
       console.log(data.cospace.image)
+      console.log(newid)
     })
 }
 
@@ -93,6 +101,24 @@ function addCospace (formData) {
       console.log(xhr.status)
       console.log(thrownError)
       window.alert('add Cospace Failed')
+    }
+  })
+}
+
+function editCospace (formData, newid) {
+  $.ajax({
+    type: 'PUT',
+    url: serverURL + 'co-working-spaces/' + newid,
+    data: formData,
+    success: function (response) {
+      // then redirect
+      window.location.href = 'cospaces.html'
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      // else output error
+      console.log(xhr.status)
+      console.log(thrownError)
+      window.alert('edit Cospace Failed')
     }
   })
 }
