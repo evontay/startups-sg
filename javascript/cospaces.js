@@ -25,9 +25,13 @@ $(function () {
   })
   $('#edit-cospace-form').on('submit', function (event) {
     event.preventDefault()
-    console.log(newid)
     var formData = $(this).serialize()
     editCospace(formData, newid)
+  })
+  $('#delete').on('submit', function (event) {
+    event.preventDefault()
+    var formData = $(this).serialize()
+    deleteCospace(formData, newid)
   })
 })
 
@@ -53,12 +57,12 @@ function showDetail (newid) {
         '<p class="grey 400">' + data.cospace.address + '</p>' +
         '<p class=" full grey 400">' + data.cospace.description + '</p></div></div>' +
         '<div class="image"><img src="' + data.cospace.image + '"/>' +
-        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>'
+        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
+        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
       )
       $('#cospace-show').show()
       console.log(data.cospace.description)
       console.log(data.cospace.image)
-      console.log(newid)
     })
 }
 
@@ -119,6 +123,24 @@ function editCospace (formData, newid) {
       console.log(xhr.status)
       console.log(thrownError)
       window.alert('edit Cospace Failed')
+    }
+  })
+}
+
+function deleteCospace (formData, newid) {
+  $.ajax({
+    type: 'DELETE',
+    url: serverURL + 'co-working-spaces/' + newid,
+    data: formData,
+    success: function (response) {
+      // then redirect
+      window.location.href = 'cospaces.html'
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      // else output error
+      console.log(xhr.status)
+      console.log(thrownError)
+      window.alert('delete Cospace Failed')
     }
   })
 }
