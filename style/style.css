@@ -126,8 +126,16 @@ a:hover {
 /* ====== SEARCHBAR ======*/
 
 .searchbar {
-  background-color: #666666;
-  padding: 20px;
+  background-color: #1bedd4;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.search-full {
+  margin: 30px auto;
+  max-width: 70%;
 }
 
 .form-group {
@@ -138,15 +146,13 @@ a:hover {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  border-top: 3px solid #1bedd4;
-  background-color: #e6e7e8;
-  /*position: fixed;
-  bottom:0;*/
+  border-top: 1px solid #1bedd4;
+  background-color: white;
+  justify-content: space-between;
 }
 
 .iconbtn {
   flex: 1;
-  background-color: #e6e7e8;
   background-repeat: no-repeat;
   background-position: center;
   height: 30px;
@@ -171,12 +177,15 @@ a:hover {
 .topuser li {
   background-color: #e6e7e8;
   border-radius: 15px;
+  padding: 7px;
 }
 
 .topuser-btn {
   color: #333333;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
 }
 
 .title {
@@ -196,7 +205,7 @@ a:hover {
   color: #ed6306;
 }
 
-ul {
+#header ul  {
   display: flex;
   padding: 0;
   justify-content: space-between;
@@ -252,6 +261,14 @@ li a {
 .full {display: none;}
 
 @media screen and (min-width: 480px) {
+  #header ul  {
+    justify-content:flex-end;
+  }
+
+  .container {
+    width: 100%;
+  }
+
   .catbox {
     flex-direction: row;
   }
@@ -332,7 +349,7 @@ li a {
 
 .image {
   width:100%;
-  
+
 }
 
 .add {
