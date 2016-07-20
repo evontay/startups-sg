@@ -410,7 +410,7 @@ li a {
   bottom: 0;
   width: 100%;
   margin: 0 auto;
-  background-color: #a9fcdc;
+  background-color: #e6e7e8;
   padding: 5px;
   border-top: solid 2px white;
   text-align: center;
@@ -420,10 +420,24 @@ li a {
   color: #333333;
 }
 
+.details {
+  text-align: left;
+  margin: 20px;
+}
+
+
 @media screen and (min-width: 480px) {
   .full-avatar {
     height: 70px;
   }
+
+  .details {
+    max-width: 800px;
+    text-align: left;
+    margin: 0 auto;
+    font-size: 1.1em;
+  }
+
 }
 
 /* ====== FORM VIEW ===== */
