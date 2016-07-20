@@ -1,6 +1,8 @@
 /* global $ google alert geocoder */
 var serverURL = 'http://startups-sg.herokuapp.com/'
+
 $(function () {
+  $('#map').addClass('hide')
   // listen for the form login
   getData()
   var newid
