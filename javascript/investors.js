@@ -83,7 +83,6 @@ function getData () {
           datum.logo = 'img/default-logo.svg'
           console.log(datum.logo)
         }
-        console.log('getting stuff')
         $('#investor').append(
           '<div id=' + datum._id + ' class="one-item">' +
           '<img class="logo-all img-circle full-avatar" src="' + datum.logo + '"/>' +
@@ -94,7 +93,6 @@ function getData () {
           '<p class="truncate full grey">' + datum.description + '</p>' +
           '</div>'
         )
-        console.log('showing stuff')
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
