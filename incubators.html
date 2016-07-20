@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Javascript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="javascript/incubators.js"></script>
   <script src="javascript/user_auth.js"></script>
   <script src="javascript/about.js"></script>
+
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -25,19 +25,89 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style/style.css">
 
+  <!--- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="./manifest.json">
+
+  <meta name="theme-color" content="#ffffff">
+
 </head>
 
 <body>
+  <div class="container center">
+    <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button>
 
-<!-- ===== MAP INCUBATORS & ACCELERATORS =====-->
-<div id='map' class="map"></div>
+    <div id="header">
+      <img class="toppad full-logo" src="img/logo.svg"/>
+      <h4 class="title darkgrey">Incubator 	&amp;<br>Accelerators</h4>
+      <p class="tagline condense lightgrey">Founders, mentors, and early ­stage investors.</p>
+    </div>
+  </div>
 
 
+  <!-- ===== MAP INCUBATORS =====-->
+  <div id='map' class="map hide"></div>
+
+  <div class="container">
+    <!-- ===== SHOW ALL INCUBATORS ===== -->
+    <div id="incubator" class="info"></div>
+    <div id='incubator-show'></div>
 
 
-<!-- ===== SHOW ALL INCUBATORS & ACCELERATORS  ===== -->
-  <div id="cospace" class="info"></div>
+    <!-- ===== ADD INCUBATORS ===== -->
+    <h3 class="add" data-toggle="modal" data-target="#addModal"><a href="#"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></h3>
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add a new entry</h4>
+        </div>
 
-<!-- ===== ADD INCUBATOR & ACCELERATOR  ===== -->
-<button>+ Add Incubator/Accelerator</button>
+        <div class="modal-body">
+          <form id="add-incubator-form">
+
+            <div class="form-group">
+              <label for="source-url">Name</label>
+              <input type="text" class="form-control" name="name" placeholder="Name">
+              <label for="source-url">Address</label>
+              <input type="text" class="form-control" name="address" placeholder="Address">
+              <label for="source-url">Description</label>
+              <input type="text" class="form-control" name="description" placeholder="Description">
+              <label for="source-url">Website</label>
+              <input type="text" class="form-control" name="website" placeholder="Website">
+              <label for="source-url">Logo</label>
+              <input type="text" class="form-control" name="url" placeholder="I need a URL!">
+              <label for="source-url">Image</label>
+              <input type="text" class="form-control" name="url" placeholder="I need a URL!">
+            </div>
+            <br>
+            <div class="form-group">
+              <button type="submit" class="btn btn-transparent">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div><!-- container -->
+
+  <!-- <div class="navfooter"> -->
+  <ul class="navfooter">
+    <a src="index.html"><li class="iconbtn home"></li></a>
+    <a src="cospaces.html"><li class="iconbtn cospace"></li></a>
+    <a src="incubators.html"><li class="iconbtn inc"></li></a>
+    <a src="events.html"><li class="iconbtn event"></li></a>
+    <a src="programs.html"><li class="iconbtn govt"></li></a>
+  </ul>
+
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOYdItVbY7ysM3lAa14KI-gZ8Fyz13p0c&callback=initMap">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+</html>

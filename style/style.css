@@ -166,7 +166,7 @@ a:hover {
 .govt { background-image: url(../img/govt-icon.svg);}
 
 /* ====== INDEX PAGE =======*/
-.hidden {
+.hide {
   display: none
 }
 
@@ -309,6 +309,36 @@ li a {
  width: 100%;
  height: 400px;
  background: #e6e7e8;
+}
+
+  @media screen and (min-width: 480px) {
+    .map-btn {
+      height:45px;
+      width: 45px;
+    }
+  }
+
+.map-btn {
+  z-index: 99;
+  background-color: #e6e7e8;
+  padding:0;
+  padding-top: 2px;
+  border-radius: 4px;
+  height: 35px;
+  width: 35px;
+  font-size: 1.2em;
+  border: none;
+  position:absolute;
+  top: 15px;
+  right: 15px;
+  color:white;
+  text-align: center;
+}
+
+.map-btn:hover {
+  color: #ed6306;
+  background-color: #a9fcdc;
+  border: 1px solid white;
 }
 
 .one-item {
