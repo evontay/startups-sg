@@ -28,7 +28,10 @@ $(function () {
 function showDetail (newid) {
   $.get(serverURL + 'co-working-spaces/' + newid)
     .done(function (data) {
+      $('#header').hide()
       $('#cospace').hide()
+      $('#map').hide()
+
       $('#cospace-show').html('')
       if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
         data.cospace.logo = 'img/default-logo.svg'
