@@ -22,10 +22,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*font boldness*/
-.400 {font-weight: 400;}
-.500 {font-weight: 500;}
-.700 {font-weight: 700;}
-.900 {font-weight: 900;}
+.400 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;}
+.500 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;}
+.700 {
+  font-family: 'Roboto',
+  sans-serif; font-weight: 700;}
+.900 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;}
 
 h1 {font-size: 3em;}
 h2 {font-size: 2.5em;}
@@ -146,6 +154,13 @@ a:hover {
 
 .topuser li {
   background-color: #e6e7e8;
+  border-radius: 15px;
+}
+
+.topuser-btn {
+  color: #333333;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .title {
@@ -204,6 +219,10 @@ li a {
   padding: 15px;
 }
 
+.cat:hover {
+  background-color: #1bedd4;
+}
+
 .in-cat {
   margin: auto;
   text-transform: uppercase;
@@ -224,6 +243,7 @@ li a {
   .cat {
     flex: 1;
     height: 200px;
+    cursor: pointer;
   }
 
   .full-logo {
@@ -242,6 +262,7 @@ li a {
   color: #888888;
 }
 
+
 /* ====== LIST ALL PAGE =======*/
 
 #map {
@@ -254,6 +275,9 @@ li a {
   cursor: pointer;
 }
 
+/* ====== MODEL VIEWS =======*/
+
+
 .one-item {
   display: flex;
   flex-direction: row;
@@ -263,10 +287,15 @@ li a {
   border-bottom: 2px solid #e6e7e8;
   justify-content: space-around;
 }
+.one-item:first-child {
+  border-top: 2px solid #e6e7e8;;
+}
+.one-item:last-child {
+  border: none;
+}
 
 .logo-all {
   height: 45px;
-  margin-top: 5px;
 }
 
 .item-blurb {
@@ -277,6 +306,25 @@ li a {
 .name-all {
   margin-bottom: 5px;
   text-transform: capitalize;
+}
+
+.address {
+  font-weight: 700;
+  color: #888888;
+  margin-bottom: 10px;
+}
+
+.add {
+  display: block;
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  color: #ED6306;
+}
+@media screen and (min-width: 480px) {
+  .full-avatar {
+    height: 70px;
+  }
 }
 
 .select {
