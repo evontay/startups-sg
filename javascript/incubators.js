@@ -108,7 +108,7 @@ function addincubator (formData) {
 }
 
 function createMarkers (map) {
-  $.get(serverURL + 'co-working-spaces')
+  $.get(serverURL + 'incubator-accelerators')
     .done(function (data) {
       data.forEach(function (datum) {
         geocoder = new google.maps.Geocoder()
