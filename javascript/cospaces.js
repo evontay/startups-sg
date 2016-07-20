@@ -4,8 +4,8 @@ var serverURL = 'http://startups-sg.herokuapp.com/'
 $(function () {
   $('#map').addClass('hide')
   // listen for the form login
-  getData()
   var newid
+  getData()
   // Show individual item
   $(document).on('click', '#cospace .one-item', function (event) {
     newid = $(this).attr('id')
@@ -36,13 +36,26 @@ $(function () {
   })
 })
 
+$(document).on('click', '.map-btn', function (event) {
+  console.log('map-btn clicked')
+  $('#header').toggleClass('hide')
+  $('#map').toggleClass('hide')
+})
+
+// Clicking on X brings the Add New Entry button back to screen
+$(document).on('click', '.close-btn', function (event) {
+  $('.add').show()
+  console.log('close-btn clicked')
+})
+
 function showDetail (newid) {
   $.get(serverURL + 'co-working-spaces/' + newid)
     .done(function (data) {
       $('#header').hide()
       $('#cospace').hide()
       $('#map').hide()
-
+      $('.map-btn').addClass('hide')
+      $('.add').addClass('hide')
       $('#cospace-show').html('')
       if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
         data.cospace.logo = 'img/default-logo.svg'
@@ -53,16 +66,25 @@ function showDetail (newid) {
         console.log(data.cospace.image)
       }
       $('#cospace-show').append(
-        '<h4>' + data.cospace.name + '</h4>' +
-        '<div id=' + data.cospace._id + ' class="one-item">' +
+        '<div class="close-btn"><a href="cospaces.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="center toppad">' +
+        '<div id=' + data.cospace._id + '>' +
         '<img class="logo-all img-circle" src="' + data.cospace.logo + '"/>' +
-        '<div class="item-blurb norm">' +
+        '<h4 class="toppad">' + data.cospace.name + '</h4>' +
+        '<div class="norm">' +
         '<p class="hyphenate"><a href="' + data.cospace.website + '">' + data.cospace.website + '</a></p>' +
-        '<p class="grey 400">' + data.cospace.address + '</p>' +
-        '<p class=" full grey 400">' + data.cospace.description + '</p></div></div>' +
-        '<div class="image"><img src="' + data.cospace.image + '"/>' +
-        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
-        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
+        '<p class="darkgrey toppad">' + data.cospace.address + '</p>' +
+        '<p class="grey 400">' + data.cospace.description + '</p>' +
+        '<img class="h-image" src="' + data.cospace.image + '"/>' +
+        '<div class="edit-del toppad">' +
+        '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
+        '<a href="#">' +
+        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>' +
+        '</h5>' +
+        '<h5 class="btn-md" type="submit" id="delete"><a href="#">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>' +
+        '</h5>' +
+        '</div></div>'
       )
       $('#cospace-show').show()
       console.log(data.cospace.description)
@@ -91,8 +113,8 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 function addCospace (formData) {
@@ -182,8 +204,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 var prevOpenWindow = null
