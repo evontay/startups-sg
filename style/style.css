@@ -402,3 +402,49 @@ label {
 .formbutton:hover {
   background-color: #1bedd4;
 }
+
+/* ====== USERS ===== */
+
+.formwrap {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.leftside {
+  flex: 2;
+}
+
+.rightside {
+  flex:1;
+}
+
+.checkbox label{
+  color: #333333;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin: 0 0 0 20px;
+}
+
+@media screen and (min-width: 480px) {
+  .formwrap {
+    flex-direction: row;
+  }
+
+  .rightside {
+    margin-top: 35px;
+    margin-left: 30px;
+  }
+
+.form {
+  max-width: 1000px
+}
+
+.bottomside {
+  flex:1;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
