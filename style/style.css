@@ -355,6 +355,7 @@ li a {
 }
 .one-item:last-child {
   border: none;
+  margin-bottom: 45px;
 }
 
 .logo-all {
@@ -385,9 +386,17 @@ li a {
 .add {
   display: block;
   position: fixed;
-  top: 50%;
-  right: 10px;
-  color: #ED6306;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 5px;
+  border-top: solid 1px #1bedd4;
+  text-align: center;
+}
+
+.add a{
+  color: #333333;
 }
 
 @media screen and (min-width: 480px) {
@@ -396,10 +405,21 @@ li a {
   }
 }
 
-.select {
-  display: flex;
-  background-color: lightgrey;
-  border: solid black 1px;
+/* ====== FORM VIEW ===== */
+.modal-dialog {
+  margin:0 auto;
+  border: none;
+  text-align: left;
+}
+@media screen and (min-width: 480px) {
+  .modal-dialog {
+    margin:10px auto;
+    border: none;
+    border-radius: 0px;
+  }
+  .modal {
+    border-radius: 0px;
+  }
 }
 
 /* ====== FORM VIEW ===== */
