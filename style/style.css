@@ -278,6 +278,14 @@ li a {
   color: #888888;
 }
 
+
+/* ====== LIST ALL PAGE =======*/
+
+.show-more {
+  background-color: #a9fcdc;
+  cursor: pointer;
+}
+
 /* ====== MODEL VIEWS =======*/
 
 #map {
