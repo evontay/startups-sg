@@ -25,6 +25,13 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style/style.css">
 
+  <!--- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="./manifest.json">
+
+  <meta name="theme-color" content="#ffffff">
+
 </head>
 
 <body>
@@ -48,7 +55,57 @@
 
   <!-- ===== SHOW ALL COWORKING SPACES ===== -->
   <div id="cospace" class="info"></div>
-  <div id='cospace-show'></div>
+
+  <!-- ===== SHOW INDIVIDUAL COWORKING SPACES ===== -->
+  <div id='cospace-show'>
+    <!-- ===== EDIT COWORKING SPACE ===== -->
+    <h3 class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title center toppad">Edit Details</h4>
+        </div>
+
+        <div class="modal-body">
+          <form id="add-cospace-form">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" name="name">
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" class="form-control" name="address">
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Website</label>
+              <input type="text" class="form-control" name="website">
+            </div>
+            <div class="form-group">
+              <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL</label>
+              <input type="text" class="form-control" name="url">
+            </div>
+            <div class="form-group">
+              <label><span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Header Image URL</label>
+              <input type="text" class="form-control" name="url">
+            </div>
+            <br>
+            <div class="form-group">
+              <button type="submit" class="btn btn-md formbutton">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 
 
   <!-- ===== ADD COWORKING SPACE ===== -->
@@ -60,29 +117,38 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add a Co-Working Space</h4>
+        <h4 class="modal-title center toppad">Add a Co-Working Space</h4>
       </div>
 
       <div class="modal-body">
         <form id="add-cospace-form">
-
           <div class="form-group">
-            <label for="source-url">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Name">
-            <label for="source-url">Address</label>
-            <input type="text" class="form-control" name="address" placeholder="Address">
-            <label for="source-url">Description</label>
-            <input type="text" class="form-control" name="description" placeholder="Description">
-            <label for="source-url">Website</label>
-            <input type="text" class="form-control" name="website" placeholder="Website">
-            <label for="source-url">Logo</label>
-            <input type="text" class="form-control" name="url" placeholder="I need a URL!">
-            <label for="source-url">Image</label>
-            <input type="text" class="form-control" name="url" placeholder="I need a URL!">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name">
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" name="address">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Website</label>
+            <input type="text" class="form-control" name="website">
+          </div>
+          <div class="form-group">
+            <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL</label>
+            <input type="text" class="form-control" name="url">
+          </div>
+          <div class="form-group">
+            <label><span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Header Image URL</label>
+            <input type="text" class="form-control" name="url">
           </div>
           <br>
           <div class="form-group">
-            <button type="submit" class="btn btn-transparent">Submit</button>
+            <button type="submit" class="btn btn-md formbutton">Submit</button>
           </div>
         </form>
       </div>
