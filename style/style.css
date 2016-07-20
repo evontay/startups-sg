@@ -262,7 +262,21 @@ li a {
   color: #888888;
 }
 
+
+/* ====== LIST ALL PAGE =======*/
+
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+.show-more {
+  background-color: #a9fcdc;
+  cursor: pointer;
+}
+
 /* ====== MODEL VIEWS =======*/
+
 
 .one-item {
   display: flex;
