@@ -82,7 +82,13 @@ p {
 
 /* ====== LAYOUT ELEMENTS ======*/
 .center {text-align: center;}
-.toppad {padding-top: 15px;}
+.close {
+  right: 20px;
+  top: 20px;
+  position: fixed;
+}
+.toppad {padding-top: 30px;}
+
 .inline-left {
   display: inline;
   float: left;
@@ -351,27 +357,6 @@ label {
   display: inline;
 }
 
-.btn-file {
-    position: relative;
-    overflow: hidden;
-}
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-}
-
-
 .selection{
   width: 40%;
   padding: 20px;
@@ -396,5 +381,11 @@ label {
   margin: auto;
   display: flex;
   justify-content: center;
-  padding: 20px
+  background-color: #a9fcdc;
+  color: #333333;
+  margin:30px auto;
+}
+
+.formbutton:hover {
+  background-color: #1bedd4;
 }
