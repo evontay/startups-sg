@@ -1,4 +1,4 @@
-/* global $ */
+/* global $ google alert geocoder */
 var serverURL = 'http://startups-sg.herokuapp.com/'
 $(function () {
   // listen for the form login
@@ -17,6 +17,11 @@ $(function () {
   $(document).on('click', '#cospace-show', function (event) {
     $('#cospace').show()
     $('#cospace-show').html('')
+  })
+  $('#add-cospace-form').on('submit', function (event) {
+    event.preventDefault()
+    var formData = $(this).serialize()
+    addCospace(formData)
   })
 })
 
@@ -70,7 +75,25 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
+      console.log(errorThrown)
+    })
+}
+
+function addCospace (formData) {
+  $.ajax({
+    type: 'POST',
+    url: serverURL + 'co-working-spaces',
+    data: formData,
+    success: function (response) {
+      // then redirect
+      window.location.href = 'cospaces.html'
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      // else output error
+      console.log(xhr.status)
+      console.log(thrownError)
+      window.alert('add Cospace Failed')
+    }
   })
 }
 
@@ -108,8 +131,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
 var prevOpenWindow = null
