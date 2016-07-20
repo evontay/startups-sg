@@ -5,21 +5,26 @@
 	 width="31.256px" height="31.257px" viewBox="0 0 31.256 31.257" enable-background="new 0 0 31.256 31.257" xml:space="preserve">
 <g>
 	<g>
-		<path fill="#ED6306" d="M25.161,25.155H6.096c-1.104,0-2-0.896-2-2V8.104c0-1.105,0.896-2,2-2h19.064c1.104,0,2,0.895,2,2v15.051
-			C27.161,24.259,26.265,25.155,25.161,25.155z M8.096,21.155h15.064V10.104H8.096V21.155z"/>
+		
+			<rect x="4.41" y="7.665" fill="none" stroke="#ED6306" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="22.437" height="4.766"/>
+		<g>
+			<circle fill="#ED6306" cx="9.315" cy="20.142" r="1.383"/>
+			<circle fill="#ED6306" cx="13.602" cy="20.142" r="1.383"/>
+			<circle fill="#ED6306" cx="17.89" cy="20.142" r="1.383"/>
+			<circle fill="#ED6306" cx="22.177" cy="20.142" r="1.383"/>
+		</g>
+		<g>
+			<circle fill="#ED6306" cx="9.197" cy="15.913" r="1.383"/>
+			<circle fill="#ED6306" cx="13.484" cy="15.913" r="1.383"/>
+			<circle fill="#ED6306" cx="17.772" cy="15.913" r="1.382"/>
+			<circle fill="#ED6306" cx="22.058" cy="15.913" r="1.383"/>
+		</g>
 	</g>
-	<rect x="6.096" y="8.104" fill="#ED6306" width="19.064" height="4.051"/>
-	<g>
-		<circle fill="#ED6306" cx="10.264" cy="18.706" r="1.175"/>
-		<circle fill="#ED6306" cx="13.907" cy="18.706" r="1.175"/>
-		<circle fill="#ED6306" cx="17.55" cy="18.706" r="1.175"/>
-		<circle fill="#ED6306" cx="21.193" cy="18.706" r="1.175"/>
-	</g>
-	<g>
-		<circle fill="#ED6306" cx="10.164" cy="15.114" r="1.175"/>
-		<circle fill="#ED6306" cx="13.806" cy="15.114" r="1.175"/>
-		<circle fill="#ED6306" cx="17.45" cy="15.114" r="1.174"/>
-		<circle fill="#ED6306" cx="21.092" cy="15.114" r="1.175"/>
-	</g>
+	
+		<rect x="4.41" y="7.665" fill="none" stroke="#ED6306" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="22.437" height="17.861"/>
+	
+		<line fill="none" stroke="#ED6306" stroke-width="2.6196" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="23.441" y1="5.729" x2="23.441" y2="8.931"/>
+	
+		<line fill="none" stroke="#ED6306" stroke-width="2.6196" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="7.932" y1="5.729" x2="7.932" y2="8.931"/>
 </g>
 </svg>
