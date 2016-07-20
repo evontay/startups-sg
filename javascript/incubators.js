@@ -1,13 +1,11 @@
 /* global $ google alert geocoder */
 var serverURL = 'http://startups-sg.herokuapp.com/'
 
-$(document).on('click', '.map-btn', function (event) {
-  console.log('map-btn clicked')
-  $('#header').toggleClass('hide')
-  $('#map').toggleClass('hide')
-})
+
 
 $(function () {
+  // $('#header').addClass('hide')
+  $('#map').addClass('hide')
   // listen for the form login
   getData()
   // Show individual item
@@ -32,6 +30,12 @@ $(function () {
   })
 })
 
+$(document).on('click', '.map-btn', function (event) {
+  console.log('map-btn clicked')
+  $('#header').toggleClass('hide')
+  $('#map').toggleClass('hide')
+})
+
 function showDetail (newid) {
   $.get(serverURL + 'incubator-accelerators/' + newid)
     .done(function (data) {
@@ -40,27 +44,27 @@ function showDetail (newid) {
       $('#map').hide()
 
       $('#incubator-show').html('')
-      if ((data.incubator.logo === '') || (data.incubator.logo === undefined) || (data.incubator.logo === null)) {
-        data.incubator.logo = 'img/default-logo.svg'
-        console.log(data.incubator.logo)
+      if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
+        data.incubator_accelerator.logo = 'img/default-logo.svg'
+        console.log(data.incubator_accelerator.logo)
       }
-      if ((data.incubator.image === '') || (data.incubator.image === undefined) || (data.incubator.image === null)) {
-        data.incubator.image = 'img/default-img.svg'
-        console.log(data.incubator.image)
+      if ((data.incubator_accelerator.image === '') || (data.incubator_accelerator.image === undefined) || (data.incubator_accelerator.image === null)) {
+        data.incubator_accelerator.image = 'img/default-img.svg'
+        console.log(data.incubator_accelerator.image)
       }
       $('#incubator-show').append(
-        '<h4>' + data.incubator.name + '</h4>' +
-        '<div id=' + data.incubator._id + ' class="one-item">' +
-        '<img class="logo-all img-circle" src="' + data.incubator.logo + '"/>' +
+        '<h4>' + data.incubator_accelerator.name + '</h4>' +
+        '<div id=' + data.incubator_accelerator._id + ' class="one-item">' +
+        '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
         '<div class="item-blurb norm">' +
-        '<p class="hyphenate"><a href="' + data.incubator.website + '">' + data.incubator.website + '</a></p>' +
-        '<p class="grey 400">' + data.incubator.address + '</p>' +
-        '<p class=" full grey 400">' + data.incubator.description + '</p></div></div>' +
-        '<div class="image"><img src="' + data.incubator.image + '"/>' +
+        '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
+        '<p class="grey 400">' + data.incubator_accelerator.address + '</p>' +
+        '<p class=" full grey 400">' + data.incubator_accelerator.description + '</p></div></div>' +
+        '<div class="image"><img src="' + data.incubator_accelerator.image + '"/>' +
         '</div>'
       )
-      console.log(data.incubator.description)
-      console.log(data.incubator.image)
+      console.log(data.incubator_accelerator.description)
+      console.log(data.incubator_accelerator.image)
     })
 }
 
@@ -112,7 +116,7 @@ function createMarkers (map) {
     .done(function (data) {
       data.forEach(function (datum) {
         geocoder = new google.maps.Geocoder()
-
+        console.log(datum.address, datum.name)
         geocoder.geocode({'address': datum.address}, function (results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             // In this case it creates a marker, but you can get the lat and lng from the location.LatLng
@@ -141,8 +145,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
 var prevOpenWindow = null
