@@ -307,6 +307,7 @@ function showDetails (newid, route, id) {
         data.cospace.image = 'img/default-img.svg'
         console.log(data.cospace.image)
       }
+      console.log(id)
       $(id + '-show').append(
         '<div class="close-btn"><a href="cospaces.html"><img src="img/x-light.svg"></a></div>' +
         '<div class="center toppad">' +
@@ -329,7 +330,6 @@ function showDetails (newid, route, id) {
         '</div></div>'
       )
       $(id + '-show').show()
-      console.log(data.cospace.description)
-      console.log(data.cospace.image)
+      console.log(data.cospace)
     })
 }

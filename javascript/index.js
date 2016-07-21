@@ -55,27 +55,26 @@ $(document).ready(function () {
       }
     }
   ]).on('autocomplete:selected', function (event, suggestion, dataset) {
-    var id = window.localStorage.id
-    var search = suggestion
-    var confirmsearch = search._id = window.localStorage.confirmsearch
-    var searchmodel = search.model 
-    if (searchmodel === 'co-working-spaces') {
-      id = '#cospace'
-      window.location.href = 'cospaces.html?id=' + confirmsearch
+    console.log(suggestion)
+    window.localStorage.confirmsearch = suggestion._id
+    window.localStorage.searchmodel = suggestion.model
+    if (window.localStorage['searchmodel'] === 'co-working-spaces') {
+      window.localStorage.id = '#cospace'
+      window.location.href = 'cospaces.html?id=' + window.localStorage['confirmsearch']
     }
-    if (searchmodel === 'investors') {
-      id = '#investor'
-      window.location.href = 'investors.html?id=' + confirmsearch
+    if (window.localStorage['searchmodel'] === 'investors') {
+      window.localStorage.id = '#investor'
+      window.location.href = 'investors.html?id=' + window.localStorage['confirmsearch']
     }
-    if (searchmodel === 'incubator-accelerators') {
-      id = '#incubator'
-      window.location.href = 'incubators.html?id=' + confirmsearch
+    if (window.localStorage['searchmodel'] === 'incubator-accelerators') {
+      window.localStorage.id = '#incubator'
+      window.location.href = 'incubators.html?id=' + window.localStorage['confirmsearch']
     }
-    if (searchmodel === 'government-programs') {
-      id = '#gov'
-      window.location.href = 'govs.html?id=' + confirmsearch
+    if (window.localStorage['searchmodel'] === 'government-programs') {
+      window.localStorage.id = '#gov'
+      window.location.href = 'govs.html?id=' + window.localStorage['confirmsearch']
     }
-    console.log(search.model)
+    //console.log(search.model)
     // showDetail(confirmsearch, searchmodel, id)
   })
 })

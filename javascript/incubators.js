@@ -10,7 +10,7 @@ $(function () {
   }
   var id = $.urlParam('id')
   if (id) {
-    showDetails(id)
+    showDetails(id, window.localStorage['searchmodel'], window.localStorage['id'])
   } else {
     getData()
   }
@@ -279,13 +279,13 @@ function showDetails (newid, route, id) {
       $('.map-btn').addClass('hide')
       $('.add').addClass('hide')
       $(id + '-show').html('')
-      if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
-        data.cospace.logo = 'img/default-logo.svg'
-        console.log(data.cospace.logo)
+      if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
+        data.incubator_accelerator.logo = 'img/default-logo.svg'
+        console.log(data.incubator_accelerator.logo)
       }
-      if ((data.cospace.image === '') || (data.cospace.image === undefined) || (data.cospace.image === null)) {
-        data.cospace.image = 'img/default-img.svg'
-        console.log(data.cospace.image)
+      if ((data.incubator_accelerator.image === '') || (data.incubator_accelerator.image === undefined) || (data.incubator_accelerator.image === null)) {
+        data.incubator_accelerator.image = 'img/default-img.svg'
+        console.log(data.incubator_accelerator.image)
       }
       $(id + '-show').append(
         '<div class="close-btn"><a href="incubators.html"><img src="img/x-light.svg"></a></div>' +
@@ -309,7 +309,7 @@ function showDetails (newid, route, id) {
         '</div></div>'
       )
       $(id + '-show').show()
-      console.log(data.cospace.description)
-      console.log(data.cospace.image)
+      console.log(data.incubator_accelerator.description)
+      console.log(data.incubator_accelerator.image)
     })
 }
