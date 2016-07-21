@@ -39,153 +39,172 @@
 
 <body>
   <div class="desk-flex">
-  <div class="side-nav full">
-    <ul>
-      <li><a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a></li>
+    <div class="side-nav full">
+      <ul>
+        <li><a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a></li>
 
-      <a href="cospaces.html"><li class="grey hover-nav  align-nav">Coworking Spaces</li></a>
+        <a href="cospaces.html"><li class="grey hover-nav  align-nav">Coworking Spaces</li></a>
 
-      <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Inccubators &amp; Accelerators</li></a>
+        <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Inccubators &amp; Accelerators</li></a>
 
-      <a href="events.html"><li class="grey hover-nav align-nav">Events &amp; Hackathons</li></a>
+        <a href="events.html"><li class="grey hover-nav align-nav">Events &amp; Hackathons</li></a>
 
-      <a href="govs.html"><li class="grey hover-nav align-nav">Government Programs</li></a>
+        <a href="govs.html"><li class="grey hover-nav align-nav">Government Programs</li></a>
 
-      <a href="investors.html"><li class="grey hover-nav align-nav">Investors</li></a>
+        <a href="investors.html"><li class="grey hover-nav align-nav">Investors</li></a>
 
-      <li class="align-nav2">
-        <button id="signup">
-          <a class="topuser-btn" href="register.html">Sign Up</a>
-        </button>
+        <li class="align-nav2">
+          <button id="signup">
+            <a class="topuser-btn" href="register.html">Sign Up</a>
+          </button>
 
-        <button id ="login">
-          <a class="topuser-btn" href="login.html">Log In</a>
-        </button>
+          <button id ="login">
+            <a class="topuser-btn" href="login.html">Log In</a>
+          </button>
 
-        <button id="logout">
-          Logout
-        </button>
-      </li>
-    </ul>
-  </div>
+          <button id="logout">
+            Logout
+          </button>
+        </li>
+      </ul>
 
-  <div class="container center">
-    <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button>
-
-    <div id="header">
-      <a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a>
-      <h4 class="title darkgrey">Incubator 	&amp;<br>Accelerators</h4>
-      <p class="tagline condense lightgrey">Founders, mentors, and early ­stage investors.</p>
-    </div>
-  </div>
-
-
-  <!-- ===== MAP INCUBATORS =====-->
-  <div id='map' class="map"></div>
-
-  <div class="container">
-    <!-- ===== SHOW ALL INCUBATORS ===== -->
-    <div id="incubator" class="info"></div>
-    <div id='incubator-show'></div>
-
-
-    <!-- ===== ADD INCUBATORS ===== -->
-    <!-- <h3 class="add" data-toggle="modal" data-target="#addModal">
-      <a href="#"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
-    </h3> -->
-    <!-- Modal -->
-    <div class="modal fade" id="addModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add a new entry</h4>
-        </div>
-
-        <div class="modal-body">
-          <form id="add-incubator-form">
-
-            <div class="form-group">
-              <label for="source-url">Name</label>
-              <input type="text" class="form-control" name="name" placeholder="Name">
-              <label for="source-url">Address</label>
-              <input type="text" class="form-control" name="address" placeholder="Address">
-              <label for="source-url">Description</label>
-              <input type="text" class="form-control" name="description" placeholder="Description">
-              <label for="source-url">Website</label>
-              <input type="text" class="form-control" name="website" placeholder="Website">
-              <label for="source-url">Logo</label>
-              <input type="text" class="form-control" name="url" placeholder="I need a URL!">
-              <label for="source-url">Image</label>
-              <input type="text" class="form-control" name="url" placeholder="I need a URL!">
-            </div>
-            <br>
-            <div class="form-group">
-              <button type="submit" class="btn btn-transparent">Submit</button>
-            </div>
-          </form>
-        </div>
+      <!-- DESKVIEW BUTTON FOR ADD ENTRY -->
+      <div class="add full" data-toggle="modal" data-target="#addModal">
+        <a href="#">
+        <h5><span class="glyphicon glyphicon-plus-sign red" aria-hidden="true"></span> New Entry</h5>
+        </a>
       </div>
-    </div>
-    </div>
+    </div><!--side-nav-->
 
-  <!-- ===== EDIT INCUBATOR ===== -->
-  <!-- Modal -->
-  <div class="modal fade" id="editModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title center toppad">Edit Details</h4>
-        </div>
-        <div class="modal-body">
-          <form id="edit-incubator-form">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" name="name">
-            </div>
-            <div class="form-group">
-              <label>Address</label>
-              <input type="text" class="form-control" name="address">
-            </div>
-            <div class="form-group">
-              <label>Description</label>
-              <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
-            </div>
-            <div class="form-group">
-              <label>Website</label>
-              <input type="text" class="form-control" name="website">
-            </div>
-            <div class="form-group">
-              <label>
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL
-              </label>
-              <input type="text" class="form-control" name="url">
-            </div>
-            <div class="form-group">
-              <label>
-                <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Header Image URL
-              </label>
-              <input type="text" class="form-control" name="url">
-            </div>
-            <br>
-            <div class="form-group">
-              <button type="submit" class="btn btn-md formbutton">Submit</button>
-            </div>
-          </form>
-        </div>
+    <div class="main-content">
+      <div class="container center">
+        <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button>
+
+      <div id="header">
+        <a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a>
+        <h4 class="title darkgrey">Incubator 	&amp;<br>Accelerators</h4>
+        <p class="tagline condense lightgrey">Founders, mentors, and early ­stage investors.</p>
       </div>
-    </div>
-  </div>
 
-  </div><!-- container -->
+      </div><!--container center-->
 
-  <div class="add" data-toggle="modal" data-target="#addModal">
+    <!-- ===== MAP INCUBATORS =====-->
+    <div id='map' class="map"></div>
+
+    <div class="container">
+      <!-- ===== SHOW ALL INCUBATORS ===== -->
+      <div id="incubator" class="info"></div>
+
+      <!-- ===== SHOW INDIVIDUAL INCUBATORS ===== -->
+      <div id='incubator-show'></div>
+
+
+      <!-- ===== ADD INCUBATORS ===== -->
+      <!-- Modal -->
+      <div class="modal fade" id="addModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title toppad center">Add a new entry</h4>
+            </div>
+
+            <div class="modal-body">
+              <form id="add-incubator-form">
+
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" class="form-control" name="address">
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Website</label>
+                  <input type="text" class="form-control" name="website">
+                </div>
+                <div class="form-group">
+                  <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logo Image URL</label>
+                  <input type="text" class="form-control" name="url" placeholder="I need a URL!">
+                </div>
+                <div class="form-group">
+                  <label for="source-url"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Additional Image URL</label>
+                  <input type="text" class="form-control" name="url" placeholder="I need a URL!">
+                </div>
+                <br>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-md formbutton"><h5>Submit</h5></button>
+                </div>
+              </form>
+            </div><!--modal-body-->
+          </div><!--modal-header-->
+        </div><!--modal-dialog-->
+      </div><!--modal-->
+
+        <!-- ===== EDIT INCUBATOR ===== -->
+        <!-- Modal -->
+        <div class="modal fade" id="editModal" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title center toppad">Edit Details</h4>
+              </div>
+              <div class="modal-body">
+                <form id="edit-incubator-form">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" name="address">
+                  </div>
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Website</label>
+                    <input type="text" class="form-control" name="website">
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL
+                    </label>
+                    <input type="text" class="form-control" name="url">
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Header Image URL
+                    </label>
+                    <input type="text" class="form-control" name="url">
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-md formbutton">Submit</button>
+                  </div>
+                </form>
+              </div><!--modal-body-->
+            </div><!--modal-content-->
+          </div><!--modal-dialog-->
+        </div><!--modal-->
+      </div><!-- container -->
+    </div><!-- main-content -->
+  </div><!-- desk-flex -->
+
+  <!-- MOBILE BUTTON FOR ADD ENTRY -->
+  <div class="add mob" data-toggle="modal" data-target="#addModal">
     <a href="#">
     <h5><span class="glyphicon glyphicon-plus-sign red" aria-hidden="true"></span> New Entry</h5>
     </a>
-  </div>
+  </div><!-- add-btn -->
 
   <!-- <div class="navfooter"> -->
   <!-- <ul class="navfooter">
