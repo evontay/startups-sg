@@ -72,7 +72,7 @@ function showDetail (newid) {
         console.log(data.government_program.image)
       }
       $('#gov-show').append(
-        '<div class="close-btn"><a href="incubators.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="close-btn"><a href="govs.html"><img src="img/x-light.svg"></a></div>' +
         '<div class="center toppad">' +
         '<div id=' + data.government_program._id + '>' +
         '<img class="logo-all img-circle" src="' + data.government_program.logo + '"/>' +

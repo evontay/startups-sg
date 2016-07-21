@@ -301,7 +301,7 @@ function showDetails (newid, route, id) {
         '<div class="center toppad">' +
         '<div id=' + data.incubator_accelerator._id + '>' +
         '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
-        '<h4 class="toppad">' + data.incubator_accelerator.name + '</h4>' +
+        '<h5 class="toppad">' + data.incubator_accelerator.name + '</h5>' +
         '<div class="norm">' +
         '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
         '<p class="toppad address">' + data.incubator_accelerator.address + '</p>' +
