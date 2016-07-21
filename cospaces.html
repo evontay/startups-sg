@@ -7,6 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Jquery & Algolia -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.17.0/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
   <!-- Javascript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="javascript/cospaces.js"></script>
@@ -43,12 +48,24 @@
   <div class="desk-flex">
   <div class="side-nav full">
 
+  <div class="container center">
+    <div id="header">
+      <ul class="topuser center">
+        <li class="norm up widekern"><a href="register.html">Sign Up</a></li>
+        <li class="norm up widekern"><a href="login.html">Log In</a></li>
+        <li class="norm up widekern" id="logout">Logout</li>
+      </ul>
+      <img class="toppad full-logo" src="img/logo.svg"/>
+      <h4 class="title darkgrey">Co-Working Spaces</h4>
+      <p class="tagline condense">Places to work, host, and meet community members.</p>
+    </div>
+
     <ul>
       <li><a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a></li>
 
       <a href="cospaces.html"><li class="grey hover-nav  align-nav">Coworking Spaces</li></a>
 
-      <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Inccubators &amp; Accelerators</li></a>
+      <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Incubators &amp; Accelerators</li></a>
 
       <a href="events.html"><li class="grey hover-nav align-nav">Events &amp; Hackathons</li></a>
 
@@ -235,6 +252,7 @@
       <a src="incubators.html" href="incubators.html"><li class="iconbtn inc"></li></a>
       <a src="events.html" href="events.html"><li class="iconbtn event"></li></a>
       <a src="programs.html" href="govs.html"><li class="iconbtn govt"></li></a>
+    </ul>
     </ul> -->
 
 
