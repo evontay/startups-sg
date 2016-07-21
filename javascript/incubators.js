@@ -1,18 +1,14 @@
 /* global $ google alert geocoder */
 var serverURL = 'http://startups-sg.herokuapp.com/'
 
-$(document).on('click', '.map-btn', function (event) {
-  console.log('map-btn clicked')
-  $('#header').toggleClass('hide')
-  $('#map').toggleClass('hide')
-})
-
 $(function () {
+  $('#map').addClass('hide')
   // listen for the form login
+  var newid
   getData()
   // Show individual item
   $(document).on('click', '#incubator .one-item', function (event) {
-    var newid = $(this).attr('id')
+    newid = $(this).attr('id')
     console.log(newid)
     showDetail(newid)
   })
@@ -28,8 +24,23 @@ $(function () {
   $('#add-incubator-form').on('submit', function (event) {
     event.preventDefault()
     var formData = $(this).serialize()
-    addincubator(formData)
+    addIncubator(formData)
   })
+  $('#edit-incubator-form').on('submit', function (event) {
+    event.preventDefault()
+    var formData = $(this).serialize()
+    editIncubator(formData, newid)
+  })
+  $(document).on('click', '#delete', function (event) {
+    event.preventDefault()
+    deleteIncubator(newid)
+  })
+})
+
+$(document).on('click', '.map-btn', function (event) {
+  console.log('map-btn clicked')
+  $('#header').toggleClass('hide')
+  $('#map').toggleClass('hide')
 })
 
 function showDetail (newid) {
@@ -40,27 +51,28 @@ function showDetail (newid) {
       $('#map').hide()
 
       $('#incubator-show').html('')
-      if ((data.incubator.logo === '') || (data.incubator.logo === undefined) || (data.incubator.logo === null)) {
-        data.incubator.logo = 'img/default-logo.svg'
-        console.log(data.incubator.logo)
+      if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
+        data.incubator_accelerator.logo = 'img/default-logo.svg'
+        console.log(data.incubator_accelerator.logo)
       }
-      if ((data.incubator.image === '') || (data.incubator.image === undefined) || (data.incubator.image === null)) {
-        data.incubator.image = 'img/default-img.svg'
-        console.log(data.incubator.image)
+      if ((data.incubator_accelerator.image === '') || (data.incubator_accelerator.image === undefined) || (data.incubator_accelerator.image === null)) {
+        data.incubator_accelerator.image = 'img/default-img.svg'
+        console.log(data.incubator_accelerator.image)
       }
       $('#incubator-show').append(
-        '<h4>' + data.incubator.name + '</h4>' +
-        '<div id=' + data.incubator._id + ' class="one-item">' +
-        '<img class="logo-all img-circle" src="' + data.incubator.logo + '"/>' +
+        '<h4>' + data.incubator_accelerator.name + '</h4>' +
+        '<div id=' + data.incubator_accelerator._id + ' class="one-item">' +
+        '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
         '<div class="item-blurb norm">' +
-        '<p class="hyphenate"><a href="' + data.incubator.website + '">' + data.incubator.website + '</a></p>' +
-        '<p class="grey 400">' + data.incubator.address + '</p>' +
-        '<p class=" full grey 400">' + data.incubator.description + '</p></div></div>' +
-        '<div class="image"><img src="' + data.incubator.image + '"/>' +
-        '</div>'
+        '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
+        '<p class="grey 400">' + data.incubator_accelerator.address + '</p>' +
+        '<p class=" full grey 400">' + data.incubator_accelerator.description + '</p></div></div>' +
+        '<div class="image"><img src="' + data.incubator_accelerator.image + '"/>' +
+        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
+        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
       )
-      console.log(data.incubator.description)
-      console.log(data.incubator.image)
+      console.log(data.incubator_accelerator.description)
+      console.log(data.incubator_accelerator.image)
     })
 }
 
@@ -85,11 +97,11 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
-function addincubator (formData) {
+function addIncubator (formData) {
   $.ajax({
     type: 'POST',
     url: serverURL + 'incubator-accelerators',
@@ -107,12 +119,47 @@ function addincubator (formData) {
   })
 }
 
+function editIncubator (formData, newid) {
+  $.ajax({
+    type: 'PUT',
+    url: serverURL + 'incubator-accelerators/' + newid,
+    data: formData,
+    success: function (response) {
+      // then redirect
+      window.location.href = 'incubators.html'
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      // else output error
+      console.log(xhr.status)
+      console.log(thrownError)
+      window.alert('edit Incubator / Accelerator Failed')
+    }
+  })
+}
+
+function deleteIncubator (newid) {
+  $.ajax({
+    type: 'DELETE',
+    url: serverURL + 'incubator-accelerators/' + newid,
+    success: function (response) {
+      // then redirect
+      window.location.href = 'incubators.html'
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      // else output error
+      console.log(xhr.status)
+      console.log(thrownError)
+      window.alert('delete Incubator / Accelerator Failed')
+    }
+  })
+}
+
 function createMarkers (map) {
   $.get(serverURL + 'incubator-accelerators')
     .done(function (data) {
       data.forEach(function (datum) {
         geocoder = new google.maps.Geocoder()
-
+        console.log(datum.address, datum.name)
         geocoder.geocode({'address': datum.address}, function (results, status) {
           if (status === google.maps.GeocoderStatus.OK) {
             // In this case it creates a marker, but you can get the lat and lng from the location.LatLng
@@ -141,8 +188,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
 var prevOpenWindow = null
