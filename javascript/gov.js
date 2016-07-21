@@ -61,7 +61,7 @@ function showDetail (newid) {
       $('#header').hide()
       $('#gov').hide()
       $('#map').hide()
-
+      $('.map-btn').addClass('hide')
       $('#gov-show').html('')
       if ((data.government_program.logo === '') || (data.government_program.logo === undefined) || (data.government_program.logo === null)) {
         data.government_program.logo = 'img/default-logo.svg'
@@ -72,16 +72,24 @@ function showDetail (newid) {
         console.log(data.government_program.image)
       }
       $('#gov-show').append(
-        '<h4>' + data.government_program.name + '</h4>' +
-        '<div id=' + data.government_program._id + ' class="one-item">' +
+        '<div class="close-btn"><a href="incubators.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="center toppad">' +
+        '<div id=' + data.government_program._id + '>' +
         '<img class="logo-all img-circle" src="' + data.government_program.logo + '"/>' +
-        '<div class="item-blurb norm">' +
+        '<h5 class="toppad">' + data.government_program.name + '</h5>' +
+        '<div class="norm">' +
         '<p class="hyphenate"><a href="' + data.government_program.website + '">' + data.government_program.website + '</a></p>' +
-        '<p class="grey 400">' + data.government_program.address + '</p>' +
-        '<p class=" full grey 400">' + data.government_program.description + '</p></div></div>' +
-        '<div class="image"><img src="' + data.government_program.image + '"/>' +
-        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
-        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
+        '<p class="grey 400 details">' + data.government_program.description + '</p>' +
+        '<img class="h-image " src="' + data.government_program.image + '"/>' +
+        '<div class="edit-del toppad">' +
+        '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
+        '<a href="#">' +
+        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>' +
+        '</h5>' +
+        '<h5 class="btn-md" type="submit" id="delete"><a href="#">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>' +
+        '</h5>' +
+        '</div></div>'
       )
       console.log(data.government_program.description)
       console.log(data.government_program.image)
@@ -109,8 +117,8 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 function addGov (formData) {
@@ -200,8 +208,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 var prevOpenWindow = null
