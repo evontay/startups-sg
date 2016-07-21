@@ -469,9 +469,9 @@ li a {
   bottom: 0;
   width: 100%;
   margin: 0 auto;
-  background-color: #e6e7e8;
+  background-color: white;
   padding: 5px;
-  border-top: solid 2px white;
+  border-top: solid 1px #1bedd4;
   text-align: center;
 }
 
@@ -490,12 +490,16 @@ li a {
     position: fixed;
     bottom: 30px;
     width: 300px;
-    border: none;
-    border-left: 1px solid #ed6306;
+    border-right: 1px solid #ed6306;
+    border-top: solid 1px #1bedd4;
   }
 
   .add:hover {
     background-color: #a9fcdc;
+    box-shadow: 0px 2px 5px 1px #e6e7e8;
+    -webkit-transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
   }
 
   .modal-body {
