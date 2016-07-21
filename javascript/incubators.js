@@ -55,38 +55,38 @@ $(document).on('click', '.map-btn', function (event) {
   $('#map').toggleClass('hide')
 })
 
-function showDetail (newid) {
-  $.get(serverURL + 'incubator-accelerators/' + newid)
-    .done(function (data) {
-      $('#header').hide()
-      $('#incubator').hide()
-      $('#map').hide()
-
-      $('#incubator-show').html('')
-      if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
-        data.incubator_accelerator.logo = 'img/default-logo.svg'
-        console.log(data.incubator_accelerator.logo)
-      }
-      if ((data.incubator_accelerator.image === '') || (data.incubator_accelerator.image === undefined) || (data.incubator_accelerator.image === null)) {
-        data.incubator_accelerator.image = 'img/default-img.svg'
-        console.log(data.incubator_accelerator.image)
-      }
-      $('#incubator-show').append(
-        '<h4>' + data.incubator_accelerator.name + '</h4>' +
-        '<div id=' + data.incubator_accelerator._id + ' class="one-item">' +
-        '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
-        '<div class="item-blurb norm">' +
-        '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
-        '<p class="grey 400">' + data.incubator_accelerator.address + '</p>' +
-        '<p class=" full grey 400">' + data.incubator_accelerator.description + '</p></div></div>' +
-        '<div class="image"><img src="' + data.incubator_accelerator.image + '"/>' +
-        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
-        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
-      )
-      console.log(data.incubator_accelerator.description)
-      console.log(data.incubator_accelerator.image)
-    })
-}
+// function showDetail (newid) {
+//   $.get(serverURL + 'incubator-accelerators/' + newid)
+//     .done(function (data) {
+//       $('#header').hide()
+//       $('#incubator').hide()
+//       $('#map').hide()
+//
+//       $('#incubator-show').html('')
+//       if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
+//         data.incubator_accelerator.logo = 'img/default-logo.svg'
+//         console.log(data.incubator_accelerator.logo)
+//       }
+//       if ((data.incubator_accelerator.image === '') || (data.incubator_accelerator.image === undefined) || (data.incubator_accelerator.image === null)) {
+//         data.incubator_accelerator.image = 'img/default-img.svg'
+//         console.log(data.incubator_accelerator.image)
+//       }
+//       $('#incubator-show').append(
+//         '<h4>' + data.incubator_accelerator.name + '</h4>' +
+//         '<div id=' + data.incubator_accelerator._id + ' class="one-item">' +
+//         '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
+//         '<div class="item-blurb norm">' +
+//         '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
+//         '<p class="grey 400">' + data.incubator_accelerator.address + '</p>' +
+//         '<p class=" full grey 400">' + data.incubator_accelerator.description + '</p></div></div>' +
+//         '<div class="image"><img src="' + data.incubator_accelerator.image + '"/>' +
+//         '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
+//         '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
+//       )
+//       console.log(data.incubator_accelerator.description)
+//       console.log(data.incubator_accelerator.image)
+//     })
+// }
 
 function getData () {
   $.get(serverURL + 'incubator-accelerators')
@@ -232,16 +232,29 @@ $(document).ready(function () {
       }
     }
   ]).on('autocomplete:selected', function (event, suggestion, dataset) {
-    search = suggestion
+    var id
+    var search = suggestion
     var confirmsearch = search._id
-    showDetail(confirmsearch)
+    var searchmodel = search.model
+    if (searchmodel === 'co-working-spaces') {
+      id = '#cospace'
+      window.location.href = 'cospaces.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'investors') {
+      id = '#investor'
+      window.location.href = 'investors.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'incubator-accelerators') {
+      id = '#incubator'
+      window.location.href = 'incubators.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'government-programs') {
+      id = '#gov'
+      window.location.href = 'govs.html?id=' + confirmsearch
+    }
+    console.log(search.model)
+    showDetail(confirmsearch, searchmodel, id)
   })
-// $input.keyup(function() {
-//   index.search($input.val(), {
-//     hitsPerPage: 10,
-//     facets: '*'
-//   }, searchCallback)
-// }).focus()
 })
 
 function searchCallback (err, content) {
@@ -254,4 +267,49 @@ function searchCallback (err, content) {
   for (var i = 0; i < content.hits.length; i++) {
     $users.append('<li>' + content.hits[i].name + '</li>')
   }
+}
+
+function showDetail (newid, route, id) {
+  $.get(serverURL + route + '/' + newid)
+    .done(function (data) {
+      console.log(route)
+      $('#header').hide()
+      $(id).hide()
+      $('#map').hide()
+      $('.map-btn').addClass('hide')
+      $('.add').addClass('hide')
+      $(id + '-show').html('')
+      if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
+        data.cospace.logo = 'img/default-logo.svg'
+        console.log(data.cospace.logo)
+      }
+      if ((data.cospace.image === '') || (data.cospace.image === undefined) || (data.cospace.image === null)) {
+        data.cospace.image = 'img/default-img.svg'
+        console.log(data.cospace.image)
+      }
+      $(id + '-show').append(
+        '<div class="close-btn"><a href="cospaces.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="center toppad">' +
+        '<div id=' + data.cospace._id + '>' +
+        '<img class="logo-all img-circle" src="' + data.cospace.logo + '"/>' +
+        '<h4 class="toppad">' + data.cospace.name + '</h4>' +
+        '<div class="norm">' +
+        '<p class="hyphenate"><a href="' + data.cospace.website + '">' + data.cospace.website + '</a></p>' +
+        '<p class="toppad address">' + data.cospace.address + '</p>' +
+        '<p class="grey 400 details">' + data.cospace.description + '</p>' +
+        '<img class="h-image " src="' + data.cospace.image + '"/>' +
+        '<div class="edit-del toppad">' +
+        '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
+        '<a href="#">' +
+        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>' +
+        '</h5>' +
+        '<h5 class="btn-md" type="submit" id="delete"><a href="#">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>' +
+        '</h5>' +
+        '</div></div>'
+      )
+      $(id + '-show').show()
+      console.log(data.cospace.description)
+      console.log(data.cospace.image)
+    })
 }

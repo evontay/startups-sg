@@ -101,7 +101,7 @@ function showDetail (newid, route, id) {
       $('#map').hide()
       $('.map-btn').addClass('hide')
       $('.add').addClass('hide')
-      $('#cospace-show').html('')
+      $(id + '-show').html('')
       if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
         data.cospace.logo = 'img/default-logo.svg'
         console.log(data.cospace.logo)
