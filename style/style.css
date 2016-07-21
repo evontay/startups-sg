@@ -453,7 +453,7 @@ li a {
 }
 
 .add {
-  display: block;
+  /*display: block;*/
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -486,13 +486,13 @@ li a {
     font-size: 1.1em;
   }
   .desk-flex {
-    /*display: flex;*/
+    display: flex;
     flex-direction: row;
   }
 
   .side-nav ul {
     width: 300px;
-    position: fixed;
+    /*position: fixed;*/
     overflow: auto;
     height: 100%;
     background-color: white;
@@ -525,15 +525,23 @@ li a {
 
   .side-nav {
     flex: 1;
+    background-color: yellow;
   }
   .main-content {
     flex: 4;
   }
 
+<<<<<<< HEAD
+=======
+  .main-content .container {
+    max-width: 800px;
+  }
+
+>>>>>>> master
 }
 
 .desk-flex {
-  flex-direction: column;
+  flex-direction: row;
 }
 
 /* ====== FORM VIEW ===== */
