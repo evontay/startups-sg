@@ -1,23 +1,23 @@
 /* global $ google alert geocoder */
-var serverURL = 'http://localhost:3000/'
+var serverURL = 'http://startups-sg.herokuapp.com/'
 
 $(function () {
   $('#map').addClass('hide')
-   $.urlParam = function(name){
-	 var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-   if(results) return results[1]
-	  return 0
- }
- var id = $.urlParam('id')
- if (id) {
-  showDetail(id)
-} else {
-  getData()
-}
-
   // listen for the form login
   var newid
-  var search
+  let search
+  $.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
+    if (results) return results[1]
+    return 0
+  }
+  var id = $.urlParam('id')
+  if (id) {
+    showDetail(id)
+  } else {
+    getData()
+  }
+
   // Show individual item
   $(document).on('click', '#cospace .one-item', function (event) {
     newid = $(this).attr('id')

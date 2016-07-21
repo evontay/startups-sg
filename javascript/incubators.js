@@ -3,9 +3,21 @@ var serverURL = 'http://startups-sg.herokuapp.com/'
 
 $(function () {
   $('#map').addClass('hide')
+  $.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
+    if (results) return results[1]
+    return 0
+  }
+  var id = $.urlParam('id')
+  if (id) {
+    showDetail(id)
+  } else {
+    getData()
+  }
   // listen for the form login
+  var search
   var newid
-  getData()
+
   // Show individual item
   $(document).on('click', '#incubator .one-item', function (event) {
     newid = $(this).attr('id')
@@ -202,4 +214,44 @@ function initMap () {
   })
 
   createMarkers(map)
+}
+
+// SEARCH FUNCTION ALGOLIA
+$(document).ready(function () {
+  var client = algoliasearch('MSZ2UYVAZJ', '78510e196a674bb800715809fb0ad104')
+  var index = client.initIndex('startup_index')
+  var $input = $('input')
+  autocomplete('#search-input', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion._highlightResult.name.value
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset) {
+    search = suggestion
+    var confirmsearch = search._id
+    showDetail(confirmsearch)
+  })
+// $input.keyup(function() {
+//   index.search($input.val(), {
+//     hitsPerPage: 10,
+//     facets: '*'
+//   }, searchCallback)
+// }).focus()
+})
+
+function searchCallback (err, content) {
+  if (err) {
+    console.error(err)
+    return
+  }
+  var $users = $('#users')
+  $users.empty()
+  for (var i = 0; i < content.hits.length; i++) {
+    $users.append('<li>' + content.hits[i].name + '</li>')
+  }
 }
