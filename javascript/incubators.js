@@ -61,7 +61,7 @@ function showDetail (newid) {
       $('#header').hide()
       $('#incubator').hide()
       $('#map').hide()
-
+      $('.map-btn').addClass('hide')
       $('#incubator-show').html('')
       if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
         data.incubator_accelerator.logo = 'img/default-logo.svg'
@@ -72,16 +72,25 @@ function showDetail (newid) {
         console.log(data.incubator_accelerator.image)
       }
       $('#incubator-show').append(
-        '<h4>' + data.incubator_accelerator.name + '</h4>' +
-        '<div id=' + data.incubator_accelerator._id + ' class="one-item">' +
+        '<div class="close-btn"><a href="incubators.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="center toppad">' +
+        '<div id=' + data.incubator_accelerator._id + '>' +
         '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
-        '<div class="item-blurb norm">' +
+        '<h5 class="toppad">' + data.incubator_accelerator.name + '</h5>' +
+        '<div class="norm">' +
         '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
-        '<p class="grey 400">' + data.incubator_accelerator.address + '</p>' +
-        '<p class=" full grey 400">' + data.incubator_accelerator.description + '</p></div></div>' +
-        '<div class="image"><img src="' + data.incubator_accelerator.image + '"/>' +
-        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
-        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
+        '<p class="toppad address">' + data.incubator_accelerator.address + '</p>' +
+        '<p class="grey 400 details">' + data.incubator_accelerator.description + '</p>' +
+        '<img class="h-image " src="' + data.incubator_accelerator.image + '"/>' +
+        '<div class="edit-del toppad">' +
+        '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
+        '<a href="#">' +
+        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>' +
+        '</h5>' +
+        '<h5 class="btn-md" type="submit" id="delete"><a href="#">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>' +
+        '</h5>' +
+        '</div></div>'
       )
       console.log(data.incubator_accelerator.description)
       console.log(data.incubator_accelerator.image)
@@ -109,8 +118,8 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 function addIncubator (formData) {
@@ -200,8 +209,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 var prevOpenWindow = null

@@ -11,7 +11,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.17.0/algoliasearch.min.js"></script>
   <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 
-
   <!-- Javascript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="javascript/gov.js"></script>
@@ -44,61 +43,15 @@
 </head>
 
 <body>
-  <div class="container center">
-    <!-- <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button> -->
-
-    <div id="header">
-      <a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a>
-      <h4 class="title darkgrey">Government Programs</h4>
-      <p class="tagline condense lightgrey">All the perks for being part of the Singapore startup scene.</p>
-    </div>
-  </div>
-
-  <!-- ===== START SEARCHBAR =====-->
-  <div class="search">
-
-    <form class="search-form search-full">
-      <div class="has-feedback">
-        <input type="text" class="form-control widekern red up" name="search" id="search-input" placeholder="Search Startups SG"><span class="glyphicon glyphicon-search form-control-feedback"></span>
-      </div>
-    <div id="search-enter"></div>
-  </form>
-  </div>
-  <div class="results" id="search-result">
-    <!-- <ul id="users"></ul> -->
-  </div>
-  <!-- ===== END SEARCHBAR =====-->
-
-  <!-- ===== MAP INCUBATORS =====-->
-  <!-- <div id='map' class="map"></div> -->
-
-  <div class="container">
-    <!-- ===== SHOW ALL INCUBATORS ===== -->
-    <div id="gov" class="info"></div>
-    <div id='gov-show'></div>
-
-
-    <!-- ===== ADD INCUBATORS ===== -->
-    <!-- <h3 class="add" data-toggle="modal" data-target="#addModal">
-      <a href="#"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
-    </h3> -->
-    <!-- Modal -->
-    <div class="modal fade" id="addModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add a new entry</h4>
-        </div>
   <div class="desk-flex">
     <div class="side-nav full">
+
       <ul>
         <li><a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a></li>
 
         <a href="cospaces.html"><li class="grey hover-nav  align-nav">Coworking Spaces</li></a>
 
-        <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Inccubators &amp; Accelerators</li></a>
+        <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Incubators &amp; Accelerators</li></a>
 
         <a href="events.html"><li class="grey hover-nav align-nav">Events &amp; Hackathons</li></a>
 
@@ -131,19 +84,19 @@
 
     <div class="main-content">
       <div class="container center">
-        <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button>
+        
 
       <div id="header">
         <a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a>
-        <h4 class="title darkgrey">Government Programs</h4>
-        <p class="tagline condense">Local organisations and resources</p>
+        <h4 class="title darkgrey">Govt Programmes</h4>
+        <p class="tagline condense">Local organisations and resources.</p>
 
         <!-- ===== START SEARCHBAR =====-->
         <div class="search">
 
           <form class="search-form search-full">
             <div class="has-feedback">
-              <input type="text" class="form-control widekern red up" name="search" id="search-input" placeholder="Search Startups SG"><span class="glyphicon glyphicon-search form-control-feedback"></span>
+              <input type="text" class="form-control widekern red up" name="search" id="search-input" placeholder="Search Government Programmes"><span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
           <div id="search-enter"></div>
         </form>
@@ -157,16 +110,17 @@
       </div><!--container-->
 
 
-      <div class="container">
-        <!-- ===== SHOW ALL COWORKING SPACES ===== -->
+
+
+        <!-- ===== SHOW ALL GOVT PROGRAMS ===== -->
         <div id="gov" class="info"></div>
 
-        <!-- ===== SHOW INDIVIDUAL COWORKING SPACES ===== -->
+        <!-- ===== SHOW INDIVIDUAL GOVT PROGRAMS ===== -->
         <div id='gov-show'>
         </div>
 
 
-        <!-- ===== ADD COWORKING SPACE ===== -->
+        <!-- ===== ADD GOVT PROGRAM ===== -->
         <!-- Modal -->
         <div class="modal fade" id="addModal" role="dialog">
           <div class="modal-dialog modal-lg">
@@ -196,11 +150,11 @@
                     <input type="text" class="form-control" name="website">
                   </div>
                   <div class="form-group">
-                    <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logo Image URL</label>
+                    <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL</label>
                     <input type="text" class="form-control" name="url">
                   </div>
                   <div class="form-group">
-                    <label><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Additional Image URL</label>
+                    <label><span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Additional Image URL</label>
                     <input type="text" class="form-control" name="url">
                   </div>
                   <br>
@@ -212,9 +166,9 @@
             </div><!--modal-content-->
           </div><!--modal-dialog-->
         </div><!--modal-->
-      </div><!--container-->
 
-      <!-- ===== EDIT COWORKING SPACE ===== -->
+
+      <!-- ===== EDIT GOVT PROGRAM ===== -->
       <!-- Modal -->
       <div class="modal fade" id="editModal" role="dialog">
           <div class="modal-dialog modal-lg">
@@ -245,13 +199,13 @@
                   </div>
 
                   <div class="form-group">
-                    <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logo Image URL</label>
+                    <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL</label>
                     <input type="text" class="form-control" name="url">
                   </div>
 
                   <div class="form-group">
                     <label>
-                      <span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Header Image URL
+                      <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Header Image URL
                     </label>
                     <input type="text" class="form-control" name="url">
                   </div>
@@ -289,10 +243,6 @@
       <a src="programs.html" href="govs.html"><li class="iconbtn govt"></li></a>
     </ul> -->
 
-
-  <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOYdItVbY7ysM3lAa14KI-gZ8Fyz13p0c&callback=initMap">
-  </script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
 </html>
