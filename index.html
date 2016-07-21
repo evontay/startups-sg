@@ -13,6 +13,11 @@
   <script src="javascript/about.js"></script>
   <script src="javascript/index.js"></script>
 
+  <!-- Jquery & Algolia -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.17.0/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -65,7 +70,7 @@
     <p class="tagline norm darkgreen up">A project for the startup community in Singapore</p>
   </div>
 
-  <div class="norm full">
+  <!-- <div class="norm full">
     <form class="search-form search-full">
          <div class="has-feedback">
              <label for="search" class="sr-only norm up">Search Startups SG</label>
@@ -73,7 +78,22 @@
                <span class="glyphicon glyphicon-search form-control-feedback"></span>
          </div>
      </form>
-  </div><!-- searchbox -->
+  </div> -->
+
+  <!-- ===== START SEARCHBAR =====-->
+  <div class="search">
+
+    <form class="search-form search-full">
+      <div class="has-feedback">
+        <input type="text" class="form-control widekern red up" name="search" id="search-input" placeholder="Search Startups SG"><span class="glyphicon glyphicon-search form-control-feedback"></span>
+      </div>
+    <div id="search-enter"></div>
+  </form>
+  </div>
+  <div class="results" id="search-result">
+    <!-- <ul id="users"></ul> -->
+  </div>
+  <!-- ===== END SEARCHBAR =====-->
 
   <div class="catbox">
     <div id="cospace-cat" class="cat">

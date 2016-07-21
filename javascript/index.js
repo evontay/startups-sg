@@ -24,3 +24,106 @@ $(document).on('click', '#govt-cat', function (event) {
   window.location = 'govs.html'
   console.log(newid)
 })
+
+$(document).on('click', '#search-enter', function (event) {
+  console.log(search)
+// var confirmsearch = search._id
+// console.log(confirmsearch)
+// console.log(search)
+// showDetail(confirmsearch)
+})
+
+$('#search-input').keypress(function (e) {
+  if (e.which === 13) { // Enter key pressed
+    $('#search-enter').click() // Trigger search button click event
+    console.log('hit')
+  }
+})
+
+// SEARCH FUNCTION ALGOLIA
+$(document).ready(function () {
+  var client = algoliasearch('MSZ2UYVAZJ', '78510e196a674bb800715809fb0ad104')
+  var index = client.initIndex('startup_index')
+  var $input = $('input')
+  autocomplete('#search-input', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion._highlightResult.name.value
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset) {
+    search = suggestion
+    console.log(search)
+    var confirmsearch = search._id
+    var searchmodel = search.model
+    var id = '#cospace'
+    console.log(search.model)
+    showDetail(confirmsearch, searchmodel, id)
+  })
+// $input.keyup(function() {
+//   index.search($input.val(), {
+//     hitsPerPage: 10,
+//     facets: '*'
+//   }, searchCallback)
+// }).focus()
+})
+
+function searchCallback (err, content) {
+  if (err) {
+    console.error(err)
+    return
+  }
+  var $users = $('#users')
+  $users.empty()
+  for (var i = 0; i < content.hits.length; i++) {
+    $users.append('<li>' + content.hits[i].name + '</li>')
+  }
+}
+
+function showDetail (newid, route, id) {
+  $.get(serverURL + route + '/' + newid)
+    .done(function (data) {
+      $('#header').hide()
+      $(id).hide()
+      $('#map').hide()
+      $('.map-btn').addClass('hide')
+      $('.add').addClass('hide')
+      $('#cospace-show').html('')
+      if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
+        data.cospace.logo = 'img/default-logo.svg'
+        console.log(data.cospace.logo)
+      }
+      if ((data.cospace.image === '') || (data.cospace.image === undefined) || (data.cospace.image === null)) {
+        data.cospace.image = 'img/default-img.svg'
+        console.log(data.cospace.image)
+      }
+      $(id + '-show').append(
+        '<div class="close-btn"><a href="cospaces.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="center toppad">' +
+        '<div id=' + data.cospace._id + '>' +
+        '<img class="logo-all img-circle" src="' + data.cospace.logo + '"/>' +
+        '<h4 class="toppad">' + data.cospace.name + '</h4>' +
+        '<div class="norm">' +
+        '<p class="hyphenate"><a href="' + data.cospace.website + '">' + data.cospace.website + '</a></p>' +
+        '<p class="toppad address">' + data.cospace.address + '</p>' +
+        '<p class="grey 400 details">' + data.cospace.description + '</p>' +
+        '<img class="h-image " src="' + data.cospace.image + '"/>' +
+        '<div class="edit-del toppad">' +
+        '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
+        '<a href="#">' +
+        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>' +
+        '</h5>' +
+        '<h5 class="btn-md" type="submit" id="delete"><a href="#">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>' +
+        '</h5>' +
+        '</div></div>'
+      )
+      $(id + '-show').show()
+      console.log(data.cospace.description)
+      console.log(data.cospace.image)
+    })
+}

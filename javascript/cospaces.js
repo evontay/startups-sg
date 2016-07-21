@@ -37,10 +37,10 @@ $(function () {
   })
   $(document).on('click', '#search-enter', function (event) {
     console.log(search)
-    // var confirmsearch = search._id
-    // console.log(confirmsearch)
-    // console.log(search)
-    // showDetail(confirmsearch)
+  // var confirmsearch = search._id
+  // console.log(confirmsearch)
+  // console.log(search)
+  // showDetail(confirmsearch)
   })
 
   $('#search-input').keypress(function (e) {
@@ -219,8 +219,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 var prevOpenWindow = null
@@ -234,7 +234,7 @@ function initMap () {
 
   createMarkers(map)
 }
-
+// SEARCH FUNCTION ALGOLIA
 $(document).ready(function () {
   var client = algoliasearch('MSZ2UYVAZJ', '78510e196a674bb800715809fb0ad104')
   var index = client.initIndex('startup_index')
@@ -258,12 +258,12 @@ $(document).ready(function () {
     console.log(search)
     showDetail(confirmsearch)
   })
-  // $input.keyup(function() {
-  //   index.search($input.val(), {
-  //     hitsPerPage: 10,
-  //     facets: '*'
-  //   }, searchCallback);
-  // }).focus();
+// $input.keyup(function() {
+//   index.search($input.val(), {
+//     hitsPerPage: 10,
+//     facets: '*'
+//   }, searchCallback)
+// }).focus()
 })
 
 function searchCallback (err, content) {
