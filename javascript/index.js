@@ -1,5 +1,5 @@
 /* global $ */
-var serverURL = 'http://startups-sg.herokuapp.com/'
+var serverURL = 'http://localhost:3000/'
 
 $(document).on('click', '#cospace-cat', function (event) {
   var newid = $(this).attr('id')
@@ -62,6 +62,7 @@ $(document).ready(function () {
     var searchmodel = search.model
     var id = '#cospace'
     console.log(search.model)
+    window.location.href = 'cospaces.html?id=' + confirmsearch
     showDetail(confirmsearch, searchmodel, id)
   })
 // $input.keyup(function() {
@@ -87,6 +88,7 @@ function searchCallback (err, content) {
 function showDetail (newid, route, id) {
   $.get(serverURL + route + '/' + newid)
     .done(function (data) {
+      console.log(route)
       $('#header').hide()
       $(id).hide()
       $('#map').hide()
