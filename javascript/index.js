@@ -1,5 +1,5 @@
 /* global $ */
-var serverURL = 'http://localhost:3000/'
+var serverURL = 'http://startups-sg.herokuapp.com/'
 
 $(document).on('click', '#cospace-cat', function (event) {
   var newid = $(this).attr('id')
