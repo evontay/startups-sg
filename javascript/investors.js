@@ -2,8 +2,19 @@
 var serverURL = 'http://startups-sg.herokuapp.com/'
 
 $(function () {
-  // $('#map').addClass('hide')
+  $.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
+    if (results) return results[1]
+    return 0
+  }
+  var id = $.urlParam('id')
+  if (id) {
+    showDetails(id)
+  } else {
+    getData()
+  }
   // listen for the form login
+  var search
   var newid
   getData()
   // Show individual item
@@ -37,43 +48,43 @@ $(function () {
   })
 })
 
-// $(document).on('click', '.map-btn', function (event) {
-//   console.log('map-btn clicked')
-//   $('#header').toggleClass('hide')
-//   $('#map').toggleClass('hide')
-// })
+$(document).on('click', '.map-btn', function (event) {
+  console.log('map-btn clicked')
+  $('#header').toggleClass('hide')
+  $('#map').toggleClass('hide')
+})
 
-// function showDetail (newid) {
-//   $.get(serverURL + 'investors/' + newid)
-//     .done(function (data) {
-//       $('#header').hide()
-//       $('#investor').hide()
-//
-//       $('#investor-show').html('')
-//       if ((data.investor.logo === '') || (data.investor.logo === undefined) || (data.investor.logo === null)) {
-//         data.investor.logo = 'img/default-logo.svg'
-//         console.log(data.investor.logo)
-//       }
-//       if ((data.investor.image === '') || (data.investor.image === undefined) || (data.investor.image === null)) {
-//         data.investor.image = 'img/default-img.svg'
-//         console.log(data.investor.image)
-//       }
-//       $('#investor-show').append(
-//         '<h4>' + data.investor.name + '</h4>' +
-//         '<div id=' + data.investor._id + ' class="one-item">' +
-//         '<img class="logo-all img-circle" src="' + data.investor.logo + '"/>' +
-//         '<div class="item-blurb norm">' +
-//         '<p class="hyphenate"><a href="' + data.investor.website + '">' + data.investor.website + '</a></p>' +
-//         '<p class="grey 400">' + data.investor.address + '</p>' +
-//         '<p class=" full grey 400">' + data.investor.description + '</p></div></div>' +
-//         '<div class="image"><img src="' + data.investor.image + '"/>' +
-//         '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
-//         '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
-//       )
-//       console.log(data.investor.description)
-//       console.log(data.investor.image)
-//     })
-// }
+function showDetail (newid) {
+  $.get(serverURL + 'investors/' + newid)
+    .done(function (data) {
+      $('#header').hide()
+      $('#investor').hide()
+
+      $('#investor-show').html('')
+      if ((data.investor.logo === '') || (data.investor.logo === undefined) || (data.investor.logo === null)) {
+        data.investor.logo = 'img/default-logo.svg'
+        console.log(data.investor.logo)
+      }
+      if ((data.investor.image === '') || (data.investor.image === undefined) || (data.investor.image === null)) {
+        data.investor.image = 'img/default-img.svg'
+        console.log(data.investor.image)
+      }
+      $('#investor-show').append(
+        '<h4>' + data.investor.name + '</h4>' +
+        '<div id=' + data.investor._id + ' class="one-item">' +
+        '<img class="logo-all img-circle" src="' + data.investor.logo + '"/>' +
+        '<div class="item-blurb norm">' +
+        '<p class="hyphenate"><a href="' + data.investor.website + '">' + data.investor.website + '</a></p>' +
+        '<p class="grey 400">' + data.investor.address + '</p>' +
+        '<p class=" full grey 400">' + data.investor.description + '</p></div></div>' +
+        '<div class="image"><img src="' + data.investor.image + '"/>' +
+        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
+        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
+      )
+      console.log(data.investor.description)
+      console.log(data.investor.image)
+    })
+}
 
 function getData () {
   $.get(serverURL + 'investors')
@@ -256,7 +267,7 @@ function searchCallback (err, content) {
   }
 }
 
-function showDetail (newid, route, id) {
+function showDetails (newid, route, id) {
   $.get(serverURL + route + '/' + newid)
     .done(function (data) {
       console.log(route)
@@ -266,25 +277,25 @@ function showDetail (newid, route, id) {
       $('.map-btn').addClass('hide')
       $('.add').addClass('hide')
       $(id + '-show').html('')
-      if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
-        data.cospace.logo = 'img/default-logo.svg'
-        console.log(data.cospace.logo)
+      if ((data.investor.logo === '') || (data.investor.logo === undefined) || (data.investor.logo === null)) {
+        data.investor.logo = 'img/default-logo.svg'
+        console.log(data.investor.logo)
       }
-      if ((data.cospace.image === '') || (data.cospace.image === undefined) || (data.cospace.image === null)) {
-        data.cospace.image = 'img/default-img.svg'
-        console.log(data.cospace.image)
+      if ((data.investor.image === '') || (data.investor.image === undefined) || (data.investor.image === null)) {
+        data.investor.image = 'img/default-img.svg'
+        console.log(data.investor.image)
       }
       $(id + '-show').append(
-        '<div class="close-btn"><a href="cospaces.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="close-btn"><a href="investors.html"><img src="img/x-light.svg"></a></div>' +
         '<div class="center toppad">' +
-        '<div id=' + data.cospace._id + '>' +
-        '<img class="logo-all img-circle" src="' + data.cospace.logo + '"/>' +
-        '<h4 class="toppad">' + data.cospace.name + '</h4>' +
+        '<div id=' + data.investor._id + '>' +
+        '<img class="logo-all img-circle" src="' + data.investor.logo + '"/>' +
+        '<h4 class="toppad">' + data.investor.name + '</h4>' +
         '<div class="norm">' +
-        '<p class="hyphenate"><a href="' + data.cospace.website + '">' + data.cospace.website + '</a></p>' +
-        '<p class="toppad address">' + data.cospace.address + '</p>' +
-        '<p class="grey 400 details">' + data.cospace.description + '</p>' +
-        '<img class="h-image " src="' + data.cospace.image + '"/>' +
+        '<p class="hyphenate"><a href="' + data.investor.website + '">' + data.investor.website + '</a></p>' +
+        '<p class="toppad address">' + data.investor.address + '</p>' +
+        '<p class="grey 400 details">' + data.investor.description + '</p>' +
+        '<img class="h-image " src="' + data.investor.image + '"/>' +
         '<div class="edit-del toppad">' +
         '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
         '<a href="#">' +
@@ -296,7 +307,7 @@ function showDetail (newid, route, id) {
         '</div></div>'
       )
       $(id + '-show').show()
-      console.log(data.cospace.description)
-      console.log(data.cospace.image)
+      console.log(data.investor.description)
+      console.log(data.investor.image)
     })
 }
