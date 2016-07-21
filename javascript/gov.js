@@ -10,7 +10,7 @@ $(function () {
   }
   var id = $.urlParam('id')
   if (id) {
-    showDetail(id)
+    showDetails(id)
   } else {
     getData()
   }
@@ -55,38 +55,38 @@ $(function () {
 //   $('#map').toggleClass('hide')
 // })
 
-// function showDetail (newid) {
-//   $.get(serverURL + 'government-programs/' + newid)
-//     .done(function (data) {
-//       $('#header').hide()
-//       $('#gov').hide()
-//       $('#map').hide()
-//
-//       $('#gov-show').html('')
-//       if ((data.government_program.logo === '') || (data.government_program.logo === undefined) || (data.government_program.logo === null)) {
-//         data.government_program.logo = 'img/default-logo.svg'
-//         console.log(data.government_program.logo)
-//       }
-//       if ((data.government_program.image === '') || (data.government_program.image === undefined) || (data.government_program.image === null)) {
-//         data.government_program.image = 'img/default-img.svg'
-//         console.log(data.government_program.image)
-//       }
-//       $('#gov-show').append(
-//         '<h4>' + data.government_program.name + '</h4>' +
-//         '<div id=' + data.government_program._id + ' class="one-item">' +
-//         '<img class="logo-all img-circle" src="' + data.government_program.logo + '"/>' +
-//         '<div class="item-blurb norm">' +
-//         '<p class="hyphenate"><a href="' + data.government_program.website + '">' + data.government_program.website + '</a></p>' +
-//         '<p class="grey 400">' + data.government_program.address + '</p>' +
-//         '<p class=" full grey 400">' + data.government_program.description + '</p></div></div>' +
-//         '<div class="image"><img src="' + data.government_program.image + '"/>' +
-//         '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
-//         '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
-//       )
-//       console.log(data.government_program.description)
-//       console.log(data.government_program.image)
-//     })
-// }
+function showDetail (newid) {
+  $.get(serverURL + 'government-programs/' + newid)
+    .done(function (data) {
+      $('#header').hide()
+      $('#gov').hide()
+      $('#map').hide()
+
+      $('#gov-show').html('')
+      if ((data.government_program.logo === '') || (data.government_program.logo === undefined) || (data.government_program.logo === null)) {
+        data.government_program.logo = 'img/default-logo.svg'
+        console.log(data.government_program.logo)
+      }
+      if ((data.government_program.image === '') || (data.government_program.image === undefined) || (data.government_program.image === null)) {
+        data.government_program.image = 'img/default-img.svg'
+        console.log(data.government_program.image)
+      }
+      $('#gov-show').append(
+        '<h4>' + data.government_program.name + '</h4>' +
+        '<div id=' + data.government_program._id + ' class="one-item">' +
+        '<img class="logo-all img-circle" src="' + data.government_program.logo + '"/>' +
+        '<div class="item-blurb norm">' +
+        '<p class="hyphenate"><a href="' + data.government_program.website + '">' + data.government_program.website + '</a></p>' +
+        '<p class="grey 400">' + data.government_program.address + '</p>' +
+        '<p class=" full grey 400">' + data.government_program.description + '</p></div></div>' +
+        '<div class="image"><img src="' + data.government_program.image + '"/>' +
+        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
+        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
+      )
+      console.log(data.government_program.description)
+      console.log(data.government_program.image)
+    })
+}
 
 function getData () {
   $.get(serverURL + 'government-programs')
@@ -269,7 +269,7 @@ function searchCallback (err, content) {
   }
 }
 
-function showDetail (newid, route, id) {
+function showDetails (newid, route, id) {
   $.get(serverURL + route + '/' + newid)
     .done(function (data) {
       console.log(route)
@@ -279,25 +279,25 @@ function showDetail (newid, route, id) {
       $('.map-btn').addClass('hide')
       $('.add').addClass('hide')
       $(id + '-show').html('')
-      if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
-        data.cospace.logo = 'img/default-logo.svg'
-        console.log(data.cospace.logo)
+      if ((data.government_program.logo === '') || (data.government_program.logo === undefined) || (data.government_program.logo === null)) {
+        data.government_program.logo = 'img/default-logo.svg'
+        console.log(data.government_program.logo)
       }
-      if ((data.cospace.image === '') || (data.cospace.image === undefined) || (data.cospace.image === null)) {
-        data.cospace.image = 'img/default-img.svg'
-        console.log(data.cospace.image)
+      if ((data.government_program.image === '') || (data.government_program.image === undefined) || (data.government_program.image === null)) {
+        data.government_program.image = 'img/default-img.svg'
+        console.log(data.government_program.image)
       }
       $(id + '-show').append(
-        '<div class="close-btn"><a href="cospaces.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="close-btn"><a href="govs.html"><img src="img/x-light.svg"></a></div>' +
         '<div class="center toppad">' +
-        '<div id=' + data.cospace._id + '>' +
-        '<img class="logo-all img-circle" src="' + data.cospace.logo + '"/>' +
-        '<h4 class="toppad">' + data.cospace.name + '</h4>' +
+        '<div id=' + data.government_program._id + '>' +
+        '<img class="logo-all img-circle" src="' + data.government_program.logo + '"/>' +
+        '<h4 class="toppad">' + data.government_program.name + '</h4>' +
         '<div class="norm">' +
-        '<p class="hyphenate"><a href="' + data.cospace.website + '">' + data.cospace.website + '</a></p>' +
-        '<p class="toppad address">' + data.cospace.address + '</p>' +
-        '<p class="grey 400 details">' + data.cospace.description + '</p>' +
-        '<img class="h-image " src="' + data.cospace.image + '"/>' +
+        '<p class="hyphenate"><a href="' + data.government_program.website + '">' + data.government_program.website + '</a></p>' +
+        '<p class="toppad address">' + data.government_program.address + '</p>' +
+        '<p class="grey 400 details">' + data.government_program.description + '</p>' +
+        '<img class="h-image " src="' + data.government_program.image + '"/>' +
         '<div class="edit-del toppad">' +
         '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
         '<a href="#">' +
@@ -309,7 +309,7 @@ function showDetail (newid, route, id) {
         '</div></div>'
       )
       $(id + '-show').show()
-      console.log(data.cospace.description)
-      console.log(data.cospace.image)
+      console.log(data.government_program.description)
+      console.log(data.government_program.image)
     })
 }

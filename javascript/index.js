@@ -55,10 +55,10 @@ $(document).ready(function () {
       }
     }
   ]).on('autocomplete:selected', function (event, suggestion, dataset) {
-    var id
+    var id = window.localStorage.id
     var search = suggestion
-    var confirmsearch = search._id
-    var searchmodel = search.model
+    var confirmsearch = search._id = window.localStorage.confirmsearch
+    var searchmodel = search.model 
     if (searchmodel === 'co-working-spaces') {
       id = '#cospace'
       window.location.href = 'cospaces.html?id=' + confirmsearch
@@ -76,7 +76,7 @@ $(document).ready(function () {
       window.location.href = 'govs.html?id=' + confirmsearch
     }
     console.log(search.model)
-    showDetail(confirmsearch, searchmodel, id)
+    // showDetail(confirmsearch, searchmodel, id)
   })
 })
 
