@@ -269,7 +269,7 @@ var formatGoogleCalendar = (function () {
   return {
     init: function (settingsOverride) {
       var settings = {
-        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/milan.kacurak@gmail.com/events?key=AIzaSyCR3-ptjHE-_douJsn8o20oRwkxt-zHStY',
+        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/84arudvc87kfnrlm7n3vbaoki4@group.calendar.google.com/events?key=AIzaSyDwr3cwM3OXuPikB1BqebAWQQyACjZsFGA',
         past: true,
         upcoming: true,
         sameDayTimes: true,
