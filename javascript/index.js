@@ -1,5 +1,5 @@
 /* global $ */
-var serverURL = 'http://startups-sg.herokuapp.com/'
+var serverURL = 'http://localhost:3000/'
 
 $(document).on('click', '#cospace-cat', function (event) {
   var newid = $(this).attr('id')
@@ -26,7 +26,6 @@ $(document).on('click', '#govt-cat', function (event) {
 })
 
 $(document).on('click', '#search-enter', function (event) {
-  console.log(search)
 // var confirmsearch = search._id
 // console.log(confirmsearch)
 // console.log(search)
@@ -56,20 +55,29 @@ $(document).ready(function () {
       }
     }
   ]).on('autocomplete:selected', function (event, suggestion, dataset) {
-    search = suggestion
-    console.log(search)
+    var id
+    var search = suggestion
     var confirmsearch = search._id
     var searchmodel = search.model
-    var id = '#cospace'
+    if (searchmodel === 'co-working-spaces') {
+      id = '#cospace'
+      window.location.href = 'cospaces.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'investors') {
+      id = '#investor'
+      window.location.href = 'investors.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'incubator-accelerators') {
+      id = '#incubator'
+      window.location.href = 'incubators.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'government-programs') {
+      id = '#gov'
+      window.location.href = 'govs.html?id=' + confirmsearch
+    }
     console.log(search.model)
     showDetail(confirmsearch, searchmodel, id)
   })
-// $input.keyup(function() {
-//   index.search($input.val(), {
-//     hitsPerPage: 10,
-//     facets: '*'
-//   }, searchCallback)
-// }).focus()
 })
 
 function searchCallback (err, content) {
@@ -87,12 +95,13 @@ function searchCallback (err, content) {
 function showDetail (newid, route, id) {
   $.get(serverURL + route + '/' + newid)
     .done(function (data) {
+      console.log(route)
       $('#header').hide()
       $(id).hide()
       $('#map').hide()
       $('.map-btn').addClass('hide')
       $('.add').addClass('hide')
-      $('#cospace-show').html('')
+      $(id + '-show').html('')
       if ((data.cospace.logo === '') || (data.cospace.logo === undefined) || (data.cospace.logo === null)) {
         data.cospace.logo = 'img/default-logo.svg'
         console.log(data.cospace.logo)

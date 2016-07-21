@@ -7,6 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Jquery & Algolia -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.17.0/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
   <!-- Javascript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="javascript/incubators.js"></script>
@@ -38,6 +42,77 @@
 </head>
 
 <body>
+  <div class="container center">
+    <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button>
+
+    <div id="header">
+      <a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a>
+      <h4 class="title darkgrey">Incubator 	&amp;<br>Accelerators</h4>
+      <p class="tagline condense lightgrey">Founders, mentors, and early ­stage investors.</p>
+    </div>
+  </div>
+  <!-- ===== START SEARCHBAR =====-->
+  <div class="search">
+
+    <form class="search-form search-full">
+      <div class="has-feedback">
+        <input type="text" class="form-control widekern red up" name="search" id="search-input" placeholder="Search Startups SG"><span class="glyphicon glyphicon-search form-control-feedback"></span>
+      </div>
+    <div id="search-enter"></div>
+  </form>
+  </div>
+  <div class="results" id="search-result">
+    <!-- <ul id="users"></ul> -->
+  </div>
+  <!-- ===== END SEARCHBAR =====-->
+
+  <!-- ===== MAP INCUBATORS =====-->
+  <div id='map' class="map"></div>
+
+  <div class="container">
+    <!-- ===== SHOW ALL INCUBATORS ===== -->
+    <div id="incubator" class="info"></div>
+    <div id='incubator-show'></div>
+
+
+    <!-- ===== ADD INCUBATORS ===== -->
+    <!-- <h3 class="add" data-toggle="modal" data-target="#addModal">
+      <a href="#"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+    </h3> -->
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add a new entry</h4>
+        </div>
+
+        <div class="modal-body">
+          <form id="add-incubator-form">
+
+            <div class="form-group">
+              <label for="source-url">Name</label>
+              <input type="text" class="form-control" name="name" placeholder="Name">
+              <label for="source-url">Address</label>
+              <input type="text" class="form-control" name="address" placeholder="Address">
+              <label for="source-url">Description</label>
+              <input type="text" class="form-control" name="description" placeholder="Description">
+              <label for="source-url">Website</label>
+              <input type="text" class="form-control" name="website" placeholder="Website">
+              <label for="source-url">Logo</label>
+              <input type="text" class="form-control" name="url" placeholder="I need a URL!">
+              <label for="source-url">Image</label>
+              <input type="text" class="form-control" name="url" placeholder="I need a URL!">
+            </div>
+            <br>
+            <div class="form-group">
+              <button type="submit" class="btn btn-transparent">Submit</button>
+            </div>
+          </form>
+        </div>
+
   <div class="desk-flex">
     <div class="side-nav full">
       <ul>

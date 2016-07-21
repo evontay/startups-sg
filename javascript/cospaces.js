@@ -5,8 +5,19 @@ $(function () {
   $('#map').addClass('hide')
   // listen for the form login
   var newid
-  var search
-  getData()
+  let search
+  $.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
+    if (results) return results[1]
+    return 0
+  }
+  var id = $.urlParam('id')
+  if (id) {
+    showDetail(id)
+  } else {
+    getData()
+  }
+
   // Show individual item
   $(document).on('click', '#cospace .one-item', function (event) {
     newid = $(this).attr('id')
@@ -108,6 +119,7 @@ function showDetail (newid) {
 }
 
 function getData () {
+  console.log(serverURL)
   $.get(serverURL + 'co-working-spaces')
     .done(function (data) {
       data.forEach(function (datum) {
