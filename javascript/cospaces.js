@@ -16,10 +16,10 @@ $(function () {
     console.log(newid)
     showDetail(newid)
   })
-  $(document).on('click', '#cospace-show', function (event) {
-    $('#cospace').show()
-    $('#cospace-show').html('')
-  })
+  // $(document).on('click', '#cospace-show', function (event) {
+  //   $('#cospace').show()
+  //   $('#cospace-show').html('')
+  // })
   $('#add-cospace-form').on('submit', function (event) {
     event.preventDefault()
     var formData = $(this).serialize()
