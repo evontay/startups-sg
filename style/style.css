@@ -486,6 +486,15 @@ li a {
 
 
 @media screen and (min-width: 480px) {
+  .add {
+    position: relative;
+  }
+
+  .modal-body {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
   .full-avatar {
     height: 70px;
   }
