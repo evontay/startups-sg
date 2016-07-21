@@ -13,6 +13,9 @@
   <script src="javascript/user_auth.js"></script>
   <script src="javascript/about.js"></script>
 
+  <!-- Jquery & Algolia -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.17.0/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -35,6 +38,37 @@
 </head>
 
 <body>
+  <div class="desk-flex">
+  <div class="side-nav full">
+    <ul>
+      <li><a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a></li>
+
+      <a href="cospaces.html"><li class="grey hover-nav  align-nav">Coworking Spaces</li></a>
+
+      <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Inccubators &amp; Accelerators</li></a>
+
+      <a href="events.html"><li class="grey hover-nav align-nav">Events &amp; Hackathons</li></a>
+
+      <a href="govs.html"><li class="grey hover-nav align-nav">Government Programs</li></a>
+
+      <a href="investors.html"><li class="grey hover-nav align-nav">Investors</li></a>
+
+      <li class="align-nav2">
+        <button id="signup">
+          <a class="topuser-btn" href="register.html">Sign Up</a>
+        </button>
+
+        <button id ="login">
+          <a class="topuser-btn" href="login.html">Log In</a>
+        </button>
+
+        <button id="logout">
+          Logout
+        </button>
+      </li>
+    </ul>
+  </div>
+
   <div class="container center">
     <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button>
 
