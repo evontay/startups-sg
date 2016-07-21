@@ -13,6 +13,11 @@
   <script src="javascript/user_auth.js"></script>
   <script src="javascript/about.js"></script>
 
+  <!-- Jquery & Algolia -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.17.0/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -66,7 +71,8 @@
       </li>
     </ul>
 
-    <div class="search"></div>
+
+
   </div>
 
   <div class="main-content">
@@ -77,83 +83,48 @@
         <a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a>
         <h4 class="title darkgrey">Co-Working Spaces</h4>
         <p class="tagline condense">Places to work, host, and meet community members.</p>
+
+        <!-- ===== START SEARCHBAR =====-->
+           <div class="search">
+           <h5>Search</h5>
+           <input type="text" id="search-input">
+           <div id="search-enter"></div>
+           </div>
+           <div class="results" id="search-result">
+           <ul id="users"></ul>
+           </div>
+
+           <!-- ===== END SEARCHBAR =====-->
+      </div>
+    </div>
+
+
+
+      <!-- ===== MAP COWORKING SPACES =====-->
+      <div id='map' class="map"></div>
+
+      <div class="container">
+      <!-- ===== SHOW ALL COWORKING SPACES ===== -->
+      <div id="cospace" class="info"></div>
+
+      <!-- ===== SHOW INDIVIDUAL COWORKING SPACES ===== -->
+      <div id='cospace-show'>
       </div>
 
 
-
-    <!-- ===== MAP COWORKING SPACES =====-->
-    <div id='map' class="map"></div>
-
-    <div class="container">
-    <!-- ===== SHOW ALL COWORKING SPACES ===== -->
-    <div id="cospace" class="info"></div>
-
-    <!-- ===== SHOW INDIVIDUAL COWORKING SPACES ===== -->
-    <div id='cospace-show'>
-    </div>
-
-
-    <!-- ===== ADD COWORKING SPACE ===== -->
-    <!-- Modal -->
-    <div class="modal fade" id="addModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h5 class="modal-title toppad">Add a Co-Working Space</h5>
-        </div>
-
-        <div class="modal-body">
-          <form id="add-cospace-form">
-            <div class="form-group">
-              <label>Name</label>
-              <input type="text" class="form-control" name="name">
-            </div>
-            <div class="form-group">
-              <label>Address</label>
-              <input type="text" class="form-control" name="address">
-            </div>
-            <div class="form-group">
-              <label>Description</label>
-              <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
-            </div>
-            <div class="form-group">
-              <label>Website</label>
-              <input type="text" class="form-control" name="website">
-            </div>
-            <div class="form-group">
-              <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logo Image URL</label>
-              <input type="text" class="form-control" name="url">
-            </div>
-            <div class="form-group">
-              <label><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Header Image URL</label>
-              <input type="text" class="form-control" name="url">
-            </div>
-            <br>
-            <div class="form-group">
-              <button type="submit" class="btn btn-md formbutton"><h5>Submit</h5></button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-    </div>
-
-    <!-- ===== EDIT COWORKING SPACE ===== -->
-    <!-- Modal -->
-    <div class="modal fade" id="editModal" role="dialog">
+      <!-- ===== ADD COWORKING SPACE ===== -->
+      <!-- Modal -->
+      <div class="modal fade" id="addModal" role="dialog">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              &times;
-            </button>
-            <h4 class="modal-title center toppad">Edit Details</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5 class="modal-title toppad">Add a Co-Working Space</h5>
           </div>
+
           <div class="modal-body">
-            <form id="edit-cospace-form">
+            <form id="add-cospace-form">
               <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" name="name">
@@ -170,34 +141,83 @@
                 <label>Website</label>
                 <input type="text" class="form-control" name="website">
               </div>
-
               <div class="form-group">
-                <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL</label>
+                <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logo Image URL</label>
                 <input type="text" class="form-control" name="url">
               </div>
-
               <div class="form-group">
-                <label>
-                  <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Header Image URL
-                </label>
+                <label><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Header Image URL</label>
                 <input type="text" class="form-control" name="url">
               </div>
-
               <br>
               <div class="form-group">
-                <button type="submit" class="btn btn-md formbutton">
-                  <h5>Submit</h5>
-                </button>
+                <button type="submit" class="btn btn-md formbutton"><h5>Submit</h5></button>
               </div>
-
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
 
-          </div><!-- modal-body -->
-        </div><!-- modal-content -->
-      </div><!-- modal-dialog modal-lg -->
-    </div><!-- modal-fade -->
+      <!-- ===== EDIT COWORKING SPACE ===== -->
+      <!-- Modal -->
+      <div class="modal fade" id="editModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+              <h4 class="modal-title center toppad">Edit Details</h4>
+            </div>
+            <div class="modal-body">
+              <form id="edit-cospace-form">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" class="form-control" name="address">
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea type="text" class="form-control" rows="3" id="description" name="description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Website</label>
+                  <input type="text" class="form-control" name="website">
+                </div>
 
-    </div><!-- container -->
+                <div class="form-group">
+                  <label><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Logo Image URL</label>
+                  <input type="text" class="form-control" name="url">
+                </div>
+
+                <div class="form-group">
+                  <label>
+                    <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>Header Image URL
+                  </label>
+                  <input type="text" class="form-control" name="url">
+                </div>
+
+                <br>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-md formbutton">
+                    <h5>Submit</h5>
+                  </button>
+                </div>
+
+              </form>
+
+            </div><!-- modal-body -->
+          </div><!-- modal-content -->
+        </div><!-- modal-dialog modal-lg -->
+      </div><!-- modal-fade -->
+
+
+    </div><!-- container center -->
 
     <div class="add mob" data-toggle="modal" data-target="#addModal">
       <a href="#">
