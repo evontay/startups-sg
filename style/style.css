@@ -290,6 +290,11 @@ li a {
   margin-bottom: 20px;
 }
 
+.catbox img {
+  width: 60%;
+  max-width: 100px;
+}
+
 .cat {
   background-color: #a9fcdc;
   border: solid 1px white;
@@ -335,7 +340,7 @@ li a {
 
   .cat {
     flex: 1;
-    height: 200px;
+    height: 250px;
     cursor: pointer;
   }
 
@@ -346,11 +351,17 @@ li a {
   .mob {display: none;}
   .full {display: block;}
 
+  .credits {
+    bottom: 0;
+    left: 25%;
+    position: fixed;
+  }
+
 }
 
 .credits {
   text-align: center;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin-bottom: 20px;
   color: #888888;
 }
@@ -462,11 +473,14 @@ li a {
   margin-bottom: 60px;
 }
 
-.edit-del h5{
+.edit-del h5 {
   flex: 1;
   text-align: center;
   color: #333333;
-  border-left:  1px solid #888;
+}
+
+.edit-del h5:last-child{
+    border-left:  1px solid #888;
 }
 
 .add {
