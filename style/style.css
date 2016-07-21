@@ -720,3 +720,19 @@ label {
   max-width: 600px;
   margin: 0 auto;
 }
+
+#events-upcoming {
+  border: 1px orange solid;
+}
+
+#events-upcoming li {
+  border: 1px orange solid;
+}
+
+#events-past {
+  border: 1px limegreen solid;
+}
+
+#events-past li {
+  border: 1px limegreen solid;
+}
