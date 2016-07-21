@@ -287,6 +287,19 @@ var formatGoogleCalendar = (function () {
     }
   }
 })()
-$(function(){
-  formatGoogleCalendar.init({})
+$(function () {
+  formatGoogleCalendar.init({
+    calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/ugehkq8pugck4d8ton3415n5cialail2@import.calendar.google.com/events?key=AIzaSyDwr3cwM3OXuPikB1BqebAWQQyACjZsFGA',
+    past: true,
+    upcoming: true,
+    sameDayTimes: true,
+    pastTopN: -1,
+    upcomingTopN: -1,
+    itemsTagName: 'li',
+    upcomingSelector: '#events-upcoming',
+    pastSelector: '#events-past',
+    upcomingHeading: '<h2>Upcoming events</h2>',
+    pastHeading: '<h2>Past events</h2>',
+    format: ['*date*', ': ', '*summary*', ' — ', '*description*', ' in ', '*location*']
+  })
 })
