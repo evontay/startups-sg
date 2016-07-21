@@ -5,6 +5,7 @@ $(function () {
   $('#map').addClass('hide')
   // listen for the form login
   var newid
+  var search
   getData()
   // Show individual item
   $(document).on('click', '#cospace .one-item', function (event) {
@@ -33,6 +34,20 @@ $(function () {
   $(document).on('click', '#delete', function (event) {
     event.preventDefault()
     deleteCospace(newid)
+  })
+  $(document).on('click', '#search-enter', function (event) {
+    console.log(search)
+    // var confirmsearch = search._id
+    // console.log(confirmsearch)
+    // console.log(search)
+    // showDetail(confirmsearch)
+  })
+
+  $('#search-input').keypress(function (e) {
+    if (e.which === 13) { // Enter key pressed
+      $('#search-enter').click() // Trigger search button click event
+      console.log('hit')
+    }
   })
 })
 
@@ -204,8 +219,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log(errorThrown)
-  })
+      console.log(errorThrown)
+    })
 }
 
 var prevOpenWindow = null
@@ -218,4 +233,47 @@ function initMap () {
   })
 
   createMarkers(map)
+}
+
+$(document).ready(function () {
+  var client = algoliasearch('MSZ2UYVAZJ', '78510e196a674bb800715809fb0ad104')
+  var index = client.initIndex('startup_index')
+  var $input = $('input')
+  autocomplete('#search-input', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion._highlightResult.name.value
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset) {
+    search = suggestion
+    console.log(search)
+    console.log(suggestion, dataset)
+    var confirmsearch = search._id
+    console.log(confirmsearch)
+    console.log(search)
+    showDetail(confirmsearch)
+  })
+  // $input.keyup(function() {
+  //   index.search($input.val(), {
+  //     hitsPerPage: 10,
+  //     facets: '*'
+  //   }, searchCallback);
+  // }).focus();
+})
+
+function searchCallback (err, content) {
+  if (err) {
+    console.error(err)
+    return
+  }
+  var $users = $('#users')
+  $users.empty()
+  for (var i = 0; i < content.hits.length; i++) {
+    $users.append('<li>' + content.hits[i].name + '</li>')
+  }
 }
