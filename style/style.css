@@ -721,20 +721,65 @@ label {
   margin: 0 auto;
 }
 
+/*EVENTS*/
+@media screen and (min-width: 480px) {
+  #events-upcoming .description {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.event-menu ul {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.event-menu a {
+  flex: 1;
+  border-radius: 4px;
+  background-color: #a9fcdc;
+  border-radius: 4px;
+  margin: 5px;
+  color: #333;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.event-menu a:hover {
+  background-color: #1bedd4;
+}
+
+
 #events-upcoming {
-  border: 1px orange solid;
   text-align: center;
   margin: 10px auto;
+  line-height: 1.2;
 }
 
 #events-upcoming .date {
   font-size: 1em;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  color: #888888;
+  color: #ed6306;
 }
 
-#events-upcoming .name {
+#events-upcoming .summary {
+  font-size: 1.2em;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 900;
+  color: #333333;
+}
+
+#events-upcoming .location {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #333333;
+
+}
+
+#events-upcoming .description {
+  display: none;
   font-size: 1.2em;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
@@ -742,9 +787,10 @@ label {
 }
 
 
-
 #events-upcoming li {
-  border: 1px orange solid;
+  background-color: #d2f7e9;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 #events-past {
@@ -752,5 +798,6 @@ label {
 }
 
 #events-past li {
-  border: 1px limegreen solid;
+  /*border: 1px #1bedd4; solid;*/
+    background-color: #e6e7e8;
 }

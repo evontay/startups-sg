@@ -36,21 +36,66 @@
 </head>
 
 <body>
-  <div class="container center">
-    <!-- <button class="map-btn center"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></button> -->
+  <div class="desk-flex">
+    <div class="side-nav full">
+      <ul>
+        <li><a href="index.html"><img class="toppad full-logo" src="img/logo.svg"/></a></li>
 
-    <div id="header">
-      <img class="toppad full-logo" src="img/logo.svg"/>
-      <h4 class="title darkgrey">Events</h4>
-      <p class="tagline condense lightgrey">Conferences, Meetups and Hackathons happening soon.</p>
+        <a href="cospaces.html"><li class="grey hover-nav  align-nav">Coworking Spaces</li></a>
+
+        <a class="hover-nav" href="incubators.html"><li class="grey hover-nav align-nav">Incubators &amp; Accelerators</li></a>
+
+        <a href="events.html"><li class="grey hover-nav align-nav">Events &amp; Hackathons</li></a>
+
+        <a href="govs.html"><li class="grey hover-nav align-nav">Government Programs</li></a>
+
+        <a href="investors.html"><li class="grey hover-nav align-nav">Investors</li></a>
+
+        <li class="align-nav2">
+          <button id="signup">
+            <a class="topuser-btn" href="register.html">Sign Up</a>
+          </button>
+
+          <button id ="login">
+            <a class="topuser-btn" href="login.html">Log In</a>
+          </button>
+
+          <button id="logout">
+            Logout
+          </button>
+        </li>
+      </ul>
+
+      <!-- DESKVIEW BUTTON FOR ADD ENTRY -->
+      <div class="add full" data-toggle="modal" data-target="#addModal">
+        <a href="#">
+        <h5><span class="glyphicon glyphicon-plus-sign red" aria-hidden="true"></span> New Entry</h5>
+        </a>
+      </div>
     </div>
-  </div>
+    <div class="main-content">
+      <div class="container center">
+        <div id="header">
+          <img class="toppad full-logo" src="img/logo.svg"/>
+          <h4 class="title darkgrey">Events</h4>
+          <p class="tagline condense lightgrey">Conferences, Meetups and Hackathons happening soon.</p>
+        </div>
+        <div class="event-menu">
+          <ul>
+            <a id="upcoming-btn" href='#events-upcoming'><li><p><span class="glyphicon glyphicon-star" aria-hidden="true"></span>  UPCOMING</p></li></a>
+            <a id="past-btn" href='#events-past'><li><p><span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> ARCHIVED</p></li></a>
+          </ul>
+        </div>
+          <!-- ===== SHOW ALL EVENTS ===== -->
+          <ul id="events-upcoming">
+          </ul>
+          <ul id="events-past">
+          </ul>
 
-<!-- ===== SHOW ALL EVENTS ===== -->
-<ul id="events-upcoming">
-</ul>
-<ul id="events-past">
-</ul>
+
+      </div><!--container center-->
+    </div><!--main-content-->
+  </div><!--desk-flex-->
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
