@@ -9,7 +9,7 @@ $(function () {
   }
   var id = $.urlParam('id')
   if (id) {
-    showDetails(id)
+    showDetails(id, window.localStorage['searchmodel'], window.localStorage['id'])
   } else {
     getData()
   }
