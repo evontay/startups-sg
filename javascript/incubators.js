@@ -3,9 +3,21 @@ var serverURL = 'http://startups-sg.herokuapp.com/'
 
 $(function () {
   $('#map').addClass('hide')
+  $.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
+    if (results) return results[1]
+    return 0
+  }
+  var id = $.urlParam('id')
+  if (id) {
+    showDetails(id, window.localStorage['searchmodel'], window.localStorage['id'])
+  } else {
+    getData()
+  }
   // listen for the form login
+  var search
   var newid
-  getData()
+
   // Show individual item
   $(document).on('click', '#incubator .one-item', function (event) {
     newid = $(this).attr('id')
@@ -49,7 +61,7 @@ function showDetail (newid) {
       $('#header').hide()
       $('#incubator').hide()
       $('#map').hide()
-
+      $('.map-btn').addClass('hide')
       $('#incubator-show').html('')
       if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
         data.incubator_accelerator.logo = 'img/default-logo.svg'
@@ -60,16 +72,25 @@ function showDetail (newid) {
         console.log(data.incubator_accelerator.image)
       }
       $('#incubator-show').append(
-        '<h4>' + data.incubator_accelerator.name + '</h4>' +
-        '<div id=' + data.incubator_accelerator._id + ' class="one-item">' +
+        '<div class="close-btn"><a href="incubators.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="center toppad">' +
+        '<div id=' + data.incubator_accelerator._id + '>' +
         '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
-        '<div class="item-blurb norm">' +
+        '<h5 class="toppad">' + data.incubator_accelerator.name + '</h5>' +
+        '<div class="norm">' +
         '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
-        '<p class="grey 400">' + data.incubator_accelerator.address + '</p>' +
-        '<p class=" full grey 400">' + data.incubator_accelerator.description + '</p></div></div>' +
-        '<div class="image"><img src="' + data.incubator_accelerator.image + '"/>' +
-        '</div>' + '<h3 class="btn btn-md formbutton" data-toggle="modal" data-target="#editModal"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>EDIT</a></h3>' +
-        '<h3 class="btn btn-md formbutton" type="submit" id="delete"><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>DELETE</a></h3>'
+        '<p class="toppad address">' + data.incubator_accelerator.address + '</p>' +
+        '<p class="grey 400 details">' + data.incubator_accelerator.description + '</p>' +
+        '<img class="h-image " src="' + data.incubator_accelerator.image + '"/>' +
+        '<div class="edit-del toppad">' +
+        '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
+        '<a href="#">' +
+        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>' +
+        '</h5>' +
+        '<h5 class="btn-md" type="submit" id="delete"><a href="#">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>' +
+        '</h5>' +
+        '</div></div>'
       )
       console.log(data.incubator_accelerator.description)
       console.log(data.incubator_accelerator.image)
@@ -97,8 +118,8 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 function addIncubator (formData) {
@@ -188,8 +209,8 @@ function createMarkers (map) {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 var prevOpenWindow = null
@@ -202,4 +223,102 @@ function initMap () {
   })
 
   createMarkers(map)
+}
+
+// SEARCH FUNCTION ALGOLIA
+$(document).ready(function () {
+  var client = algoliasearch('MSZ2UYVAZJ', '78510e196a674bb800715809fb0ad104')
+  var index = client.initIndex('startup_index')
+  var $input = $('input')
+  autocomplete('#search-input', {hint: false}, [
+    {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+      displayKey: 'name',
+      templates: {
+        suggestion: function (suggestion) {
+          return suggestion._highlightResult.name.value
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function (event, suggestion, dataset) {
+    var id
+    var search = suggestion
+    var confirmsearch = search._id
+    var searchmodel = search.model
+    if (searchmodel === 'co-working-spaces') {
+      id = '#cospace'
+      window.location.href = 'cospaces.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'investors') {
+      id = '#investor'
+      window.location.href = 'investors.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'incubator-accelerators') {
+      id = '#incubator'
+      window.location.href = 'incubators.html?id=' + confirmsearch
+    }
+    if (searchmodel === 'government-programs') {
+      id = '#gov'
+      window.location.href = 'govs.html?id=' + confirmsearch
+    }
+    console.log(search.model)
+    showDetail(confirmsearch, searchmodel, id)
+  })
+})
+
+function searchCallback (err, content) {
+  if (err) {
+    console.error(err)
+    return
+  }
+  var $users = $('#users')
+  $users.empty()
+  for (var i = 0; i < content.hits.length; i++) {
+    $users.append('<li>' + content.hits[i].name + '</li>')
+  }
+}
+
+function showDetails (newid, route, id) {
+  $.get(serverURL + route + '/' + newid)
+    .done(function (data) {
+      console.log(route)
+      $('#header').hide()
+      $(id).hide()
+      $('#map').hide()
+      $('.map-btn').addClass('hide')
+      $('.add').addClass('hide')
+      $(id + '-show').html('')
+      if ((data.incubator_accelerator.logo === '') || (data.incubator_accelerator.logo === undefined) || (data.incubator_accelerator.logo === null)) {
+        data.incubator_accelerator.logo = 'img/default-logo.svg'
+        console.log(data.incubator_accelerator.logo)
+      }
+      if ((data.incubator_accelerator.image === '') || (data.incubator_accelerator.image === undefined) || (data.incubator_accelerator.image === null)) {
+        data.incubator_accelerator.image = 'img/default-img.svg'
+        console.log(data.incubator_accelerator.image)
+      }
+      $(id + '-show').append(
+        '<div class="close-btn"><a href="incubators.html"><img src="img/x-light.svg"></a></div>' +
+        '<div class="center toppad">' +
+        '<div id=' + data.incubator_accelerator._id + '>' +
+        '<img class="logo-all img-circle" src="' + data.incubator_accelerator.logo + '"/>' +
+        '<h5 class="toppad">' + data.incubator_accelerator.name + '</h5>' +
+        '<div class="norm">' +
+        '<p class="hyphenate"><a href="' + data.incubator_accelerator.website + '">' + data.incubator_accelerator.website + '</a></p>' +
+        '<p class="toppad address">' + data.incubator_accelerator.address + '</p>' +
+        '<p class="grey 400 details">' + data.incubator_accelerator.description + '</p>' +
+        '<img class="h-image " src="' + data.incubator_accelerator.image + '"/>' +
+        '<div class="edit-del toppad">' +
+        '<h5 class="btn-md" data-toggle="modal" data-target="#editModal">' +
+        '<a href="#">' +
+        '<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</a>' +
+        '</h5>' +
+        '<h5 class="btn-md" type="submit" id="delete"><a href="#">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</a>' +
+        '</h5>' +
+        '</div></div>'
+      )
+      $(id + '-show').show()
+      console.log(data.incubator_accelerator.description)
+      console.log(data.incubator_accelerator.image)
+    })
 }

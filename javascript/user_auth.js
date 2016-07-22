@@ -2,8 +2,6 @@
 var serverURL = 'http://startups-sg.herokuapp.com/'
 var currentUser = null
 
-
-
 // load the user from the server. This ensures we have a logged in user
 function loadUser () {
   $.ajax({

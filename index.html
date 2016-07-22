@@ -13,6 +13,11 @@
   <script src="javascript/about.js"></script>
   <script src="javascript/index.js"></script>
 
+  <!-- Jquery & Algolia -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.17.0/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -34,11 +39,11 @@
 </head>
 <body class="Site">
 
-  <div class="searchbar red norm mob">
+  <div class="searchbar mob">
     <form action="" class="search-form">
          <div class="has-feedback">
-             <label for="search" class="sr-only norm up">Search Startups Singapore</label>
-             <input type="text" class="form-control" name="search" id="search" placeholder="Search Startups Singapore">
+             <label for="search" class="sr-only norm up">Search Startups SGe</label>
+             <input type="text" class="form-control widekern up norm" name="search" id="search" placeholder="Search Startups SG">
                <span class="glyphicon glyphicon-search form-control-feedback"></span>
          </div>
      </form>
@@ -56,7 +61,7 @@
         </li>
 
         <li id="logout">
-          Logout
+          <a class="topuser-btn" href="#">Logout</a>
         </li>
       </ul>
     </div>
@@ -65,15 +70,30 @@
     <p class="tagline norm darkgreen up">A project for the startup community in Singapore</p>
   </div>
 
-  <div class="norm upcase full">
+  <!-- <div class="norm full">
     <form class="search-form search-full">
          <div class="has-feedback">
-             <label for="search" class="sr-only norm up">Search Startups Singapore</label>
-             <input type="text" class="form-control" name="search" id="search" placeholder="Search Startups SG">
+             <label for="search" class="sr-only norm up">Search Startups SG</label>
+             <input type="text" class="form-control widekern red up" name="search" id="search" placeholder="Search Startups SG">
                <span class="glyphicon glyphicon-search form-control-feedback"></span>
          </div>
      </form>
-  </div><!-- searchbox -->
+  </div> -->
+
+  <!-- ===== START SEARCHBAR =====-->
+  <div class="search">
+
+    <form class="search-form search-full">
+      <div class="has-feedback">
+        <input type="text" class="form-control widekern red up" name="search" id="search-input" placeholder="Search Startups SG"><span class="glyphicon glyphicon-search form-control-feedback"></span>
+      </div>
+    <div id="search-enter"></div>
+  </form>
+  </div>
+  <div class="results" id="search-result">
+    <!-- <ul id="users"></ul> -->
+  </div>
+  <!-- ===== END SEARCHBAR =====-->
 
   <div class="catbox">
     <div id="cospace-cat" class="cat">
@@ -85,13 +105,13 @@
     <div id="inc-cat" class="cat">
       <img class="in-cat mob" src="img/inc-red.svg">
       <img class="in-cat full" src="img/inc-full.svg">
-      <p class="in-cat condense">Incubators/<br>Accelerators</p>
+      <p class="in-cat condense">Incubators &amp;<br>Accelerators</p>
     </div>
 
     <div id="event-cat" class="cat">
       <img class="in-cat mob" src="img/event-red.svg"></p>
       <img class="in-cat full" src="img/event-full.svg">
-      <p class="in-cat condense">Tech/Startup<br>Events<br></p>
+      <p class="in-cat condense">Events &amp;<br>Hackathons<br></p>
     </div>
 
     <div id ="govt-cat" class="cat">
@@ -103,12 +123,13 @@
 
   <div class="credits norm Site-content">
     <div class="container">
-      <p>Start-up Singapore is a project started by GLEW &copy; 2016 </p>
-      <p>Special credits to Ahn-Minh T Do</p>
+      <p>Startups SG is a community project started by GLEW &copy; 2016. Special credits to Ahn-Minh T Do.</p>
+      <a href="http://snowsandpatrol.github.io/startup-sg-documentation/"><p>Check out the Startups SG API documentation.</p>
     </div>
   </div>
 
   <!-- <div class="navfooter"> -->
+  <div class="mob">
     <ul class="navfooter">
       <a src="index.html" href="index.html"><li class="iconbtn home"></li></a>
       <a src="cospaces.html" href="cospaces.html"><li class="iconbtn cospace"></li></a>
@@ -116,6 +137,6 @@
       <a src="events.html" href="events.html"><li class="iconbtn event"></li></a>
       <a src="programs.html" href="govs.html"><li class="iconbtn govt"></li></a>
     </ul>
-
+  </div>
 </body>
 </html>
