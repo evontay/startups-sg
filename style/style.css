@@ -725,8 +725,30 @@ label {
 @media screen and (min-width: 480px) {
   #events-upcoming .description {
     display: block;
+    font-family: 'Roboto', sans-serif;
   }
 }
+
+.event-menu ul {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.event-menu a {
+  flex: 1;
+  border-radius: 4px;
+  background-color: #a9fcdc;
+  border-radius: 4px;
+  margin: 5px;
+  color: #333;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.event-menu a:hover {
+  background-color: #1bedd4;
+}
+
 
 #events-upcoming {
   text-align: center;
@@ -766,7 +788,7 @@ label {
 
 
 #events-upcoming li {
-  background-color: #a9fcdc;
+  background-color: #d2f7e9;
   padding: 10px;
   margin-bottom: 10px;
 }
