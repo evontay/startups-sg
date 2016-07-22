@@ -14,7 +14,6 @@ $(function () {
     getData()
   }
   // listen for the form login
-  var search
   var newid
   getData()
   // Show individual item
