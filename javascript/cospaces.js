@@ -3,6 +3,8 @@ var serverURL = 'https://startups-sg.herokuapp.com/'
 
 $(function () {
   $('#map').addClass('hide')
+  window.setTimeout(() => {
+    $('#map').addClass('hide')}, 100)
   // listen for the form login
   var newid
   let search
