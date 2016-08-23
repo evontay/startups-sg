@@ -2,7 +2,9 @@
 var serverURL = 'https://startups-sg.herokuapp.com/'
 
 $(function () {
-  $('#map').addClass('hide')
+  // $('#map').addClass('hide')
+    window.setTimeout(() => {
+    $('#map').addClass('hide')}, 100)
   $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
     if (results) return results[1]
