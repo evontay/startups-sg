@@ -546,11 +546,11 @@ li a {
     width: 300px;
     border-right: 1px solid #ed6306;
     border-top: solid 1px #1bedd4;
+    padding: 20px;
   }
 
   .add:hover {
     background-color: #a9fcdc;
-    box-shadow: 0px 2px 5px 1px #e6e7e8;
     -webkit-transition: 0.2s ease-out;
     -moz-transition: 0.2s ease-out;
     transition: 0.2s ease-out;
