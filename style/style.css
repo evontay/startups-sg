@@ -353,8 +353,8 @@ li a {
 
   .credits {
     bottom: 0;
-    left: 25%;
-    position: fixed;
+    margin-top: 50px;
+    position: relative;
   }
 
 }
