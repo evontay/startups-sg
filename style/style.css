@@ -230,8 +230,8 @@ a:hover {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;
   background-color:  #e6e7e8;
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 3px;
+  padding: 5px 10px;
 }
 
 .topuser-btn:hover {
@@ -252,9 +252,11 @@ button {
 }
 
 .tagline {
+  font-size: 1.2em;
+  font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
   margin-bottom: 20px;
-  text-transform: uppercase;
+  text-transform:capitalize;
   letter-spacing: 1.5px;
   line-height: 1.5;
   font-weight: 900;
@@ -264,11 +266,10 @@ button {
 #header ul  {
   display: flex;
   padding: 0;
-  justify-content: space-between;
 }
 
 li {
-  flex: 1;
+  /*flex: 1;*/
   padding: 5px;
   margin: 5px 10px;
   border-radius: 2px;
@@ -290,9 +291,13 @@ li a {
   margin-bottom: 20px;
 }
 
+.catbox p {
+  font-size: 1em;
+}
+
 .catbox img {
   width: 60%;
-  max-width: 100px;
+  max-width: 150px;
 }
 
 .cat {
@@ -322,10 +327,13 @@ li a {
 .full {display: none;}
 
 @media screen and (min-width: 480px) {
-  #header ul  {
-    justify-content:flex-end;
+  .topuser {
+    margin-top: 10px;
   }
 
+  .title {
+    font-size: 3em;
+  }
   #header img {
     display: none;
   }
@@ -336,12 +344,22 @@ li a {
 
   .catbox {
     flex-direction: row;
+    margin-top: 50px;
+  }
+
+  .catbox p {
+    font-size: 1.4em;
   }
 
   .cat {
     flex: 1;
     height: 250px;
     cursor: pointer;
+    padding: 40px 20px;
+  }
+
+  .cat img {
+    margin-bottom: 20px;
   }
 
   .full-logo {
