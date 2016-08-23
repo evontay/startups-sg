@@ -1,5 +1,5 @@
 /* global $ */
-var serverURL = 'http://startups-sg.herokuapp.com/'
+var serverURL = 'https://startups-sg.herokuapp.com/'
 
 $(document).on('click', '#cospace-cat', function (event) {
   var newid = $(this).attr('id')
@@ -26,10 +26,10 @@ $(document).on('click', '#govt-cat', function (event) {
 })
 
 $(document).on('click', '#search-enter', function (event) {
-// var confirmsearch = search._id
-// console.log(confirmsearch)
-// console.log(search)
-// showDetail(confirmsearch)
+  // var confirmsearch = search._id
+  // console.log(confirmsearch)
+  // console.log(search)
+  // showDetail(confirmsearch)
 })
 
 $('#search-input').keypress(function (e) {
@@ -74,8 +74,8 @@ $(document).ready(function () {
       window.localStorage.id = '#gov'
       window.location.href = 'govs.html?id=' + window.localStorage['confirmsearch']
     }
-    //console.log(search.model)
-    // showDetail(confirmsearch, searchmodel, id)
+  // console.log(search.model)
+  // showDetail(confirmsearch, searchmodel, id)
   })
 })
 

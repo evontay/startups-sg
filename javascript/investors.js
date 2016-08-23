@@ -1,5 +1,5 @@
 /* global $ */
-var serverURL = 'http://startups-sg.herokuapp.com/'
+var serverURL = 'https://startups-sg.herokuapp.com/'
 
 $(function () {
   $.urlParam = function (name) {
@@ -106,8 +106,8 @@ function getData () {
       })
     // console.log(data)
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log(errorThrown)
-    })
+    console.log(errorThrown)
+  })
 }
 
 function addInvestor (formData) {

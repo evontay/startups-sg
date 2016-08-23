@@ -1,5 +1,5 @@
 /* global $ google alert geocoder */
-var serverURL = 'http://startups-sg.herokuapp.com/'
+var serverURL = 'https://startups-sg.herokuapp.com/'
 
 $(function () {
   $('#map').addClass('hide')
