@@ -5,6 +5,7 @@ $(function () {
   $('#map').addClass('hide')
   window.setTimeout(() => {
     $('#map').addClass('hide')}, 100)
+  console.log('window.setTimeout')
   // listen for the form login
   var newid
   let search
